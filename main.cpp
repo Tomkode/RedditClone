@@ -8,5 +8,7 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
     //mario ma suge de pula
-    //trhomas e gay
+    //trhomas e gayfut pe sasadsadas
+
+    sdadasasdasdadazd pizdad
 }
