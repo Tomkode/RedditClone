@@ -1,14 +1,15 @@
 #include "Reddit69.h"
 #include <QtWidgets/QApplication>
+#include "LogInWindow.h"
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Reddit69 w;
+    LogInWindow w;
     w.show();
-    return a.exec();
-    //mario ma suge de pula
-    //trhomas e gayfut pe sasadsadas
 
-    sdadasasdasdadazd pizdad
+    return a.exec();
+
+
 }
