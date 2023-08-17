@@ -7,4 +7,5 @@ int main(int argc, char *argv[])
     Reddit69 w;
     w.show();
     return a.exec();
+    //trhomas e gay
 }
