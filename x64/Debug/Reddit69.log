@@ -1,2 +1,2 @@
-﻿MSVCRT.lib(initializers.obj) : warning LNK4098: defaultlib 'msvcrtd.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿  LogInWindow.cpp
   Reddit69.vcxproj -> C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\Reddit69.exe
