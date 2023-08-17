@@ -46,6 +46,12 @@
     <ClCompile Include="SignUpWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Service.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Validator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LogInWindow.h">
@@ -64,7 +70,10 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cryptopp\cryptlib.h">
+    <ClInclude Include="Service.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Validator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

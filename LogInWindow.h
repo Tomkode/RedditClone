@@ -2,7 +2,6 @@
 
 #include <QMainWindow>
 #include "ui_LogInWindow.h"
-#include <string.h>
 
 class LogInWindow : public QMainWindow
 {

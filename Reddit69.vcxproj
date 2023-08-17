@@ -101,7 +101,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Service.cpp" />
     <ClCompile Include="SignUpWindow.cpp" />
+    <ClCompile Include="Validator.cpp" />
     <QtRcc Include="Reddit69.qrc" />
     <QtUic Include="LogInWindow.ui" />
     <QtUic Include="Reddit69.ui" />
@@ -118,7 +120,8 @@
     <QtMoc Include="SignUpWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cryptopp\cryptlib.h" />
+    <ClInclude Include="Service.h" />
+    <ClInclude Include="Validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
