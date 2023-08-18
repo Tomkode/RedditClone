@@ -2,7 +2,6 @@
 
 #include <QMainWindow>
 #include "ui_LogInWindow.h"
-
 class LogInWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -10,10 +9,13 @@ class LogInWindow : public QMainWindow
 public:
 	LogInWindow(QWidget *parent = nullptr);
 	~LogInWindow();
+	void setChild(QWidget* w);
 
 private:
 	Ui::LogInWindowClass ui;
+	QWidget* signUpWindow;
 	void initLogInWindow();
 	void connectSignalsAndSlots();
 	void logIn();
+	void signUp();
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SignUpWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -28,13 +28,18 @@ class Ui_SignUpWindowClass
 {
 public:
     QWidget *centralWidget;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_2;
     QLabel *logoLabel;
-    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QLineEdit *userNameLineEdit;
+    QLabel *userNameErrorLabel;
     QLineEdit *emailLineEdit;
+    QLabel *emailErrorLabel;
     QLineEdit *passwordLineEdit;
+    QLabel *passwordErrorLabel;
     QLineEdit *confirmPasswordLineEdit;
+    QLabel *confirmPasswordErrorLabel;
     QSpacerItem *verticalSpacer;
     QPushButton *signUpButton;
     QMenuBar *menuBar;
@@ -48,45 +53,75 @@ public:
         SignUpWindowClass->resize(306, 426);
         centralWidget = new QWidget(SignUpWindowClass);
         centralWidget->setObjectName("centralWidget");
-        logoLabel = new QLabel(centralWidget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(10, 10, 241, 311));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        logoLabel = new QLabel(layoutWidget);
         logoLabel->setObjectName("logoLabel");
-        logoLabel->setGeometry(QRect(100, 10, 49, 16));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(10, 100, 281, 201));
-        verticalLayout = new QVBoxLayout(widget);
+        logoLabel->setMinimumSize(QSize(200, 40));
+
+        verticalLayout_2->addWidget(logoLabel);
+
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        userNameLineEdit = new QLineEdit(widget);
+        userNameLineEdit = new QLineEdit(layoutWidget);
         userNameLineEdit->setObjectName("userNameLineEdit");
 
         verticalLayout->addWidget(userNameLineEdit);
 
-        emailLineEdit = new QLineEdit(widget);
+        userNameErrorLabel = new QLabel(layoutWidget);
+        userNameErrorLabel->setObjectName("userNameErrorLabel");
+
+        verticalLayout->addWidget(userNameErrorLabel);
+
+        emailLineEdit = new QLineEdit(layoutWidget);
         emailLineEdit->setObjectName("emailLineEdit");
 
         verticalLayout->addWidget(emailLineEdit);
 
-        passwordLineEdit = new QLineEdit(widget);
+        emailErrorLabel = new QLabel(layoutWidget);
+        emailErrorLabel->setObjectName("emailErrorLabel");
+
+        verticalLayout->addWidget(emailErrorLabel);
+
+        passwordLineEdit = new QLineEdit(layoutWidget);
         passwordLineEdit->setObjectName("passwordLineEdit");
+        passwordLineEdit->setEchoMode(QLineEdit::Normal);
 
         verticalLayout->addWidget(passwordLineEdit);
 
-        confirmPasswordLineEdit = new QLineEdit(widget);
+        passwordErrorLabel = new QLabel(layoutWidget);
+        passwordErrorLabel->setObjectName("passwordErrorLabel");
+
+        verticalLayout->addWidget(passwordErrorLabel);
+
+        confirmPasswordLineEdit = new QLineEdit(layoutWidget);
         confirmPasswordLineEdit->setObjectName("confirmPasswordLineEdit");
 
         verticalLayout->addWidget(confirmPasswordLineEdit);
+
+        confirmPasswordErrorLabel = new QLabel(layoutWidget);
+        confirmPasswordErrorLabel->setObjectName("confirmPasswordErrorLabel");
+
+        verticalLayout->addWidget(confirmPasswordErrorLabel);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
 
-        signUpButton = new QPushButton(widget);
+        signUpButton = new QPushButton(layoutWidget);
         signUpButton->setObjectName("signUpButton");
 
         verticalLayout->addWidget(signUpButton);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
 
         SignUpWindowClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SignUpWindowClass);
@@ -109,10 +144,18 @@ public:
     {
         SignUpWindowClass->setWindowTitle(QCoreApplication::translate("SignUpWindowClass", "SignUpWindow", nullptr));
         logoLabel->setText(QCoreApplication::translate("SignUpWindowClass", "TextLabel", nullptr));
-        userNameLineEdit->setText(QCoreApplication::translate("SignUpWindowClass", "Username", nullptr));
-        emailLineEdit->setText(QCoreApplication::translate("SignUpWindowClass", "Email", nullptr));
-        passwordLineEdit->setText(QCoreApplication::translate("SignUpWindowClass", "Password", nullptr));
-        confirmPasswordLineEdit->setText(QCoreApplication::translate("SignUpWindowClass", "Confirm Password", nullptr));
+        userNameLineEdit->setText(QString());
+        userNameLineEdit->setPlaceholderText(QCoreApplication::translate("SignUpWindowClass", "User Name", nullptr));
+        userNameErrorLabel->setText(QString());
+        emailLineEdit->setText(QString());
+        emailLineEdit->setPlaceholderText(QCoreApplication::translate("SignUpWindowClass", "Email", nullptr));
+        emailErrorLabel->setText(QString());
+        passwordLineEdit->setText(QString());
+        passwordLineEdit->setPlaceholderText(QCoreApplication::translate("SignUpWindowClass", "Password", nullptr));
+        passwordErrorLabel->setText(QString());
+        confirmPasswordLineEdit->setText(QString());
+        confirmPasswordLineEdit->setPlaceholderText(QCoreApplication::translate("SignUpWindowClass", "Confirm Password", nullptr));
+        confirmPasswordErrorLabel->setText(QString());
         signUpButton->setText(QCoreApplication::translate("SignUpWindowClass", "Sign Up", nullptr));
     } // retranslateUi
 

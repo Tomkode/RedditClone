@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'LogInWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -26,7 +26,7 @@ class Ui_LogInWindowClass
 {
 public:
     QWidget *centralWidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *logoLabel;
     QVBoxLayout *verticalLayout;
@@ -46,15 +46,15 @@ public:
         LogInWindowClass->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         centralWidget = new QWidget(LogInWindowClass);
         centralWidget->setObjectName("centralWidget");
-        widget = new QWidget(centralWidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(90, 30, 204, 431));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(90, 30, 204, 431));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        logoLabel = new QLabel(widget);
+        logoLabel = new QLabel(layoutWidget);
         logoLabel->setObjectName("logoLabel");
         logoLabel->setMaximumSize(QSize(200, 100));
 
@@ -67,22 +67,22 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        passwordLineEdit = new QLineEdit(widget);
+        passwordLineEdit = new QLineEdit(layoutWidget);
         passwordLineEdit->setObjectName("passwordLineEdit");
 
         verticalLayout->addWidget(passwordLineEdit);
 
-        userNameLineEdit = new QLineEdit(widget);
+        userNameLineEdit = new QLineEdit(layoutWidget);
         userNameLineEdit->setObjectName("userNameLineEdit");
 
         verticalLayout->addWidget(userNameLineEdit);
 
-        logInButton = new QPushButton(widget);
+        logInButton = new QPushButton(layoutWidget);
         logInButton->setObjectName("logInButton");
 
         verticalLayout->addWidget(logInButton);
 
-        signUpButton = new QPushButton(widget);
+        signUpButton = new QPushButton(layoutWidget);
         signUpButton->setObjectName("signUpButton");
 
         verticalLayout->addWidget(signUpButton);
@@ -108,8 +108,10 @@ public:
     {
         LogInWindowClass->setWindowTitle(QCoreApplication::translate("LogInWindowClass", "LogInWindow", nullptr));
         logoLabel->setText(QCoreApplication::translate("LogInWindowClass", "<html><head/><body><p><img src=\":/Reddit69/images/Reddit Logo\"/></p></body></html>", nullptr));
-        passwordLineEdit->setText(QCoreApplication::translate("LogInWindowClass", "User Name", nullptr));
-        userNameLineEdit->setText(QCoreApplication::translate("LogInWindowClass", "Password", nullptr));
+        passwordLineEdit->setText(QString());
+        passwordLineEdit->setPlaceholderText(QCoreApplication::translate("LogInWindowClass", "User Name", nullptr));
+        userNameLineEdit->setText(QString());
+        userNameLineEdit->setPlaceholderText(QCoreApplication::translate("LogInWindowClass", "Password", nullptr));
         logInButton->setText(QCoreApplication::translate("LogInWindowClass", "Log In", nullptr));
         signUpButton->setText(QCoreApplication::translate("LogInWindowClass", "Sign Up", nullptr));
     } // retranslateUi

@@ -17,7 +17,7 @@
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -61,6 +61,9 @@
        <item>
         <widget class="QLineEdit" name="passwordLineEdit">
          <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
           <string>User Name</string>
          </property>
         </widget>
@@ -68,6 +71,9 @@
        <item>
         <widget class="QLineEdit" name="userNameLineEdit">
          <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
           <string>Password</string>
          </property>
         </widget>
@@ -108,7 +114,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="D:/GitHub/RedditClone/Reddit69.qrc"/>
+  <include location="Reddit69.qrc"/>
  </resources>
  <connections/>
 </ui>

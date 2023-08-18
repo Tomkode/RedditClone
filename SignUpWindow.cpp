@@ -4,28 +4,60 @@ SignUpWindow::SignUpWindow(Service& serv, QWidget *parent)
 	: QMainWindow(parent), service{serv}
 {
 	ui.setupUi(this);
+	initSignUpWindow();
 }
 
 SignUpWindow::~SignUpWindow()
 {}
 
-void SignUpWindow::initSingUpWindow()
+void SignUpWindow::setParent(QWidget * w)
+{
+	this->logInWindow = w;
+}
+
+
+void SignUpWindow::initSignUpWindow()
 {
 	QPixmap pixmap("images\\Reddit Logo");
 	ui.logoLabel->setPixmap(pixmap);
 	ui.logoLabel->setMask(pixmap.mask());
 	ui.logoLabel->show();
 	ui.logoLabel->setScaledContents(true);
-
+	ui.passwordLineEdit->setEchoMode(QLineEdit::Password);
+	ui.confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
 	connectSignalsAndSlots();
 }
 
 void SignUpWindow::signUpUser()
 {
-	string userName = this->ui.userNameLineEdit->text().toStdString();
-	string password = this->ui.passwordLineEdit->text().toStdString();
-	string email = this->ui.emailLineEdit->text().toStdString();
-	service.createUserAccount(userName, password, email);
+	//clear the error labels 69
+	this->ui.userNameErrorLabel->setText("");
+	this->ui.emailErrorLabel->setText("");
+	this->ui.passwordErrorLabel->setText("");
+	this->ui.confirmPasswordErrorLabel->setText("");
+	string userName = this->ui.userNameLineEdit->text().toLocal8Bit().constData();
+	string password = this->ui.passwordLineEdit->text().toLocal8Bit().constData();
+	string email = this->ui.emailLineEdit->text().toLocal8Bit().constData();
+	string confirmPassword = this->ui.confirmPasswordLineEdit->text().toLocal8Bit().constData();
+	try {
+		service.createUserAccount(userName, password, confirmPassword, email);
+		this->logInWindow->show();
+		this->hide();
+	}
+	catch (UsernameException& err) {
+		this->ui.userNameErrorLabel->setText(err.what());
+	}
+	catch (PasswordException& err) {
+		this->ui.passwordErrorLabel->setText(err.what());
+	}
+	catch (EmailException& err) {
+		this->ui.emailErrorLabel->setText(err.what());
+	}
+	catch (DifferentPasswordsException& err) {
+		this->ui.confirmPasswordErrorLabel->setText(err.what());
+	}
+	//after creating the account,close this window and redirect the user to the login window
+	
 }
 
 void SignUpWindow::connectSignalsAndSlots()

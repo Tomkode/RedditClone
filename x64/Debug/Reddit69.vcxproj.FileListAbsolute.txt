@@ -1,1 +1,2 @@
 C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\Reddit69.exe
+D:\RedditClone-main\x64\Debug\Reddit69.exe

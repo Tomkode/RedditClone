@@ -4,8 +4,6 @@
 #include "ui_SignUpWindow.h"
 #include "Service.h"
 
-
-
 class SignUpWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -13,12 +11,12 @@ class SignUpWindow : public QMainWindow
 public:
 	SignUpWindow(Service& serv, QWidget *parent = nullptr);
 	~SignUpWindow();
-
+	void setParent(QWidget* w);
 private:
 	Service& service;
 	Ui::SignUpWindowClass ui;
-
-	void initSingUpWindow();
+	QWidget* logInWindow;
+	void initSignUpWindow();
 	void signUpUser();
 	void connectSignalsAndSlots();
 };

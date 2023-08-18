@@ -14,11 +14,15 @@ std::string Service::hashToSHA256(std::string inputString)
 	return string(hash_str);
 }
 
-void Service::createUserAccount(std::string userName, std::string password, std::string email)
+void Service::createUserAccount(std::string userName, std::string password, std::string confirmPassword, std::string email)
 {
-	//processing for username, password and email
+	Validator v;
 	//validations for username, password and email
-	string hashedPassword = this->hashToSHA256(password);
+	v.isValidUsername(userName);
+	v.isValidEmail(email);
+	v.isValidPassword(password);
+	v.arePasswordsEqual(password, confirmPassword);
+	//string hashedPassword = this->hashToSHA256(password);
 }
 
 
