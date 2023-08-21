@@ -29,3 +29,10 @@ public:
 		return "Passwords must be the same!";
 	}
 };
+class AccountInexistentException : public std::exception
+{
+public:
+	const char* what() {
+		return "The entered account doesn't exist!";
+	}
+};

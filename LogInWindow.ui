@@ -59,7 +59,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="passwordLineEdit">
+        <widget class="QLineEdit" name="userNameLineEdit">
          <property name="text">
           <string/>
          </property>
@@ -69,7 +69,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="userNameLineEdit">
+        <widget class="QLineEdit" name="passwordLineEdit">
          <property name="text">
           <string/>
          </property>
@@ -89,6 +89,22 @@
         <widget class="QPushButton" name="signUpButton">
          <property name="text">
           <string>Sign Up</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="errorLabel">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

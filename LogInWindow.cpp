@@ -3,8 +3,8 @@
 
 using namespace std;
 
-LogInWindow::LogInWindow(QWidget *parent)
-	: QMainWindow(parent)
+LogInWindow::LogInWindow(Service& serv, QWidget *parent)
+	: QMainWindow(parent), service(serv)
 {
 	ui.setupUi(this);
 	this->initLogInWindow();
@@ -36,8 +36,21 @@ void LogInWindow::connectSignalsAndSlots()
 
 void LogInWindow::logIn()
 {
-	string userName = this->ui.userNameLineEdit->text().toStdString();
-	string password = this->ui.passwordLineEdit->text().toStdString();
+	this->ui.errorLabel->setText("");
+	string userName = this->ui.userNameLineEdit->text().toLocal8Bit().constData();
+	string password = this->ui.passwordLineEdit->text().toLocal8Bit().constData();
+	if (userName == "" || password == "")
+	{
+		this->ui.errorLabel->setText("You must fill in both fields!");
+		return;
+	}
+	try {
+		service.checkAccountExistence(userName, service.hashToSHA256(password));
+		this->ui.errorLabel->setText("Granted access!");
+	}
+	catch (AccountInexistentException& err) {
+		this->ui.errorLabel->setText("The account doesn't exist.Create one or reset your password!");
+	}
 }
 
 void LogInWindow::signUp()

@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Service service;
-    LogInWindow* login = new LogInWindow;
+    LogInWindow* login = new LogInWindow(service);
     SignUpWindow* signup = new SignUpWindow(service);
     login->setChild(signup);
     signup->setParent(login);
