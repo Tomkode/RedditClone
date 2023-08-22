@@ -3,7 +3,7 @@
 
 using namespace std;
 
-LogInWindow::LogInWindow(Service& serv, QWidget *parent)
+LogInWindow::LogInWindow(Service& serv, QWidget* parent)
 	: QMainWindow(parent), service(serv)
 {
 	ui.setupUi(this);
@@ -48,10 +48,10 @@ void LogInWindow::logIn()
 		service.verifyAccountCredentials(userName, service.hashToSHA256(password));
 		this->ui.errorLabel->setText("Granted access!");
 	}
-	catch (AccountInexistentException& err) {
+	catch (InexistentAcccountException& err) {
 		this->ui.errorLabel->setText("The account doesn't exist.Create one or reset your password!");
 	}
-	
+
 }
 
 void LogInWindow::signUp()

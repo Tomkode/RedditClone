@@ -38,7 +38,7 @@ public:
 };
 
 
-class AccountInexistentException : public std::exception
+class InexistentAcccountException : public std::exception
 {
 public:
 	const char* what() {

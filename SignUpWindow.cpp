@@ -1,7 +1,7 @@
 #include "SignUpWindow.h"
 using namespace std;
-SignUpWindow::SignUpWindow(Service& serv, QWidget *parent)
-	: QMainWindow(parent), service{serv}
+SignUpWindow::SignUpWindow(Service& serv, QWidget* parent)
+	: QMainWindow(parent), service{ serv }
 {
 	ui.setupUi(this);
 	initSignUpWindow();
@@ -11,7 +11,7 @@ SignUpWindow::SignUpWindow(Service& serv, QWidget *parent)
 SignUpWindow::~SignUpWindow()
 {}
 
-void SignUpWindow::setParent(QWidget * w)
+void SignUpWindow::setParent(QWidget* w)
 {
 	this->logInWindow = w;
 }
