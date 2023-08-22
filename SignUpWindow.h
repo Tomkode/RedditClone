@@ -19,4 +19,5 @@ private:
 	void initSignUpWindow();
 	void signUpUser();
 	void connectSignalsAndSlots();
+	void switchWindows();
 };

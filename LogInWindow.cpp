@@ -56,6 +56,8 @@ void LogInWindow::logIn()
 
 void LogInWindow::signUp()
 {
+	this->ui.userNameLineEdit->clear();
+	this->ui.passwordLineEdit->clear();
 	this->signUpWindow->show();
 	this->hide();
 }

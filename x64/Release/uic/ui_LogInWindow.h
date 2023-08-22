@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'LogInWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -26,7 +27,9 @@ class Ui_LogInWindowClass
 {
 public:
     QWidget *centralWidget;
-    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_2;
     QLabel *logoLabel;
     QVBoxLayout *verticalLayout;
@@ -37,25 +40,33 @@ public:
     QPushButton *signUpButton;
     QLabel *errorLabel;
     QSpacerItem *verticalSpacer;
+    QSpacerItem *horizontalSpacer_2;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *LogInWindowClass)
     {
         if (LogInWindowClass->objectName().isEmpty())
             LogInWindowClass->setObjectName("LogInWindowClass");
-        LogInWindowClass->resize(388, 559);
+        LogInWindowClass->resize(404, 356);
+        LogInWindowClass->setMinimumSize(QSize(400, 300));
         LogInWindowClass->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         centralWidget = new QWidget(LogInWindowClass);
         centralWidget->setObjectName("centralWidget");
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(90, 30, 204, 431));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        horizontalLayout_2 = new QHBoxLayout(centralWidget);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalSpacer = new QSpacerItem(138, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        logoLabel = new QLabel(layoutWidget);
+        logoLabel = new QLabel(centralWidget);
         logoLabel->setObjectName("logoLabel");
         logoLabel->setMaximumSize(QSize(200, 100));
 
@@ -64,31 +75,32 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalSpacer_2 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        userNameLineEdit = new QLineEdit(layoutWidget);
+        userNameLineEdit = new QLineEdit(centralWidget);
         userNameLineEdit->setObjectName("userNameLineEdit");
 
         verticalLayout->addWidget(userNameLineEdit);
 
-        passwordLineEdit = new QLineEdit(layoutWidget);
+        passwordLineEdit = new QLineEdit(centralWidget);
         passwordLineEdit->setObjectName("passwordLineEdit");
 
         verticalLayout->addWidget(passwordLineEdit);
 
-        logInButton = new QPushButton(layoutWidget);
+        logInButton = new QPushButton(centralWidget);
         logInButton->setObjectName("logInButton");
 
         verticalLayout->addWidget(logInButton);
 
-        signUpButton = new QPushButton(layoutWidget);
+        signUpButton = new QPushButton(centralWidget);
         signUpButton->setObjectName("signUpButton");
 
         verticalLayout->addWidget(signUpButton);
 
-        errorLabel = new QLabel(layoutWidget);
+        errorLabel = new QLabel(centralWidget);
         errorLabel->setObjectName("errorLabel");
         errorLabel->setMinimumSize(QSize(0, 50));
         errorLabel->setWordWrap(true);
@@ -101,6 +113,16 @@ public:
 
 
         verticalLayout_2->addLayout(verticalLayout);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
+
+        horizontalSpacer_2 = new QSpacerItem(138, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+
+        horizontalLayout_2->addLayout(horizontalLayout);
 
         LogInWindowClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(LogInWindowClass);

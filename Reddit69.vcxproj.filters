@@ -55,6 +55,12 @@
     <ClCompile Include="ValidatorException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="userRepository.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LogInWindow.h">
@@ -80,6 +86,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ValidatorException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="userRepository.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

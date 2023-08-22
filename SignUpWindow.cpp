@@ -43,13 +43,8 @@ void SignUpWindow::signUpUser()
 		service.createUserAccount(userName, password, confirmPassword, email);
 
 		//clear line edits
-		this->ui.userNameLineEdit->clear();
-		this->ui.passwordLineEdit->clear();
-		this->ui.emailLineEdit->clear();
-		this->ui.confirmPasswordLineEdit->clear();
 
-		this->logInWindow->show();
-		this->hide();
+		this->switchWindows();
 	}
 	catch (InvalidUsernameException& err) {
 		this->ui.userNameErrorLabel->setText(err.what());
@@ -82,4 +77,15 @@ void SignUpWindow::signUpUser()
 void SignUpWindow::connectSignalsAndSlots()
 {
 	connect(this->ui.signUpButton, &QPushButton::clicked, this, &SignUpWindow::signUpUser);
+	connect(this->ui.logInButton, &QPushButton::clicked, this, &SignUpWindow::switchWindows);
+}
+
+void SignUpWindow::switchWindows()
+{
+	this->ui.userNameLineEdit->clear();
+	this->ui.passwordLineEdit->clear();
+	this->ui.emailLineEdit->clear();
+	this->ui.confirmPasswordLineEdit->clear();
+	this->logInWindow->show();
+	this->hide();
 }
