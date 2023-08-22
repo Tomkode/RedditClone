@@ -45,12 +45,13 @@ void LogInWindow::logIn()
 		return;
 	}
 	try {
-		service.checkAccountExistence(userName, service.hashToSHA256(password));
+		service.verifyAccountCredentials(userName, service.hashToSHA256(password));
 		this->ui.errorLabel->setText("Granted access!");
 	}
 	catch (AccountInexistentException& err) {
 		this->ui.errorLabel->setText("The account doesn't exist.Create one or reset your password!");
 	}
+	
 }
 
 void LogInWindow::signUp()

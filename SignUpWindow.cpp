@@ -5,6 +5,7 @@ SignUpWindow::SignUpWindow(Service& serv, QWidget *parent)
 {
 	ui.setupUi(this);
 	initSignUpWindow();
+	connectSignalsAndSlots();
 }
 
 SignUpWindow::~SignUpWindow()
@@ -25,7 +26,6 @@ void SignUpWindow::initSignUpWindow()
 	ui.logoLabel->setScaledContents(true);
 	ui.passwordLineEdit->setEchoMode(QLineEdit::Password);
 	ui.confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
-	connectSignalsAndSlots();
 }
 
 void SignUpWindow::signUpUser()
@@ -41,23 +41,42 @@ void SignUpWindow::signUpUser()
 	string confirmPassword = this->ui.confirmPasswordLineEdit->text().toLocal8Bit().constData();
 	try {
 		service.createUserAccount(userName, password, confirmPassword, email);
+
+		//clear line edits
+		this->ui.userNameLineEdit->clear();
+		this->ui.passwordLineEdit->clear();
+		this->ui.emailLineEdit->clear();
+		this->ui.confirmPasswordLineEdit->clear();
+
 		this->logInWindow->show();
 		this->hide();
 	}
-	catch (UsernameException& err) {
+	catch (InvalidUsernameException& err) {
 		this->ui.userNameErrorLabel->setText(err.what());
 	}
-	catch (PasswordException& err) {
+	catch (InvalidPasswordException& err) {
 		this->ui.passwordErrorLabel->setText(err.what());
 	}
-	catch (EmailException& err) {
+	catch (InvalidEmailException& err) {
 		this->ui.emailErrorLabel->setText(err.what());
 	}
 	catch (DifferentPasswordsException& err) {
 		this->ui.confirmPasswordErrorLabel->setText(err.what());
 	}
+	catch (ExistentUsernameException& err)
+	{
+		this->ui.userNameErrorLabel->setText(err.what());
+	}
+	catch (ExistentEmailException& err)
+	{
+		this->ui.emailErrorLabel->setText(err.what());
+	}
+	catch (exception& err)
+	{
+		this->ui.generalErrorLabel->setText("Unknown Error");
+	}
 	//after creating the account,close this window and redirect the user to the login window
-	
+
 }
 
 void SignUpWindow::connectSignalsAndSlots()

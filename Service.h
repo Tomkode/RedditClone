@@ -15,6 +15,7 @@ public:
 	std::string hashToSHA256(std::string input_string);
 	void createUserAccount(std::string userName, std::string password, std::string confirmPassword, std::string email);
 	void addToDatabase(std::string userName, std::string hashedPass, std::string email);
-	void checkAccountExistence(std::string userName, std::string hashedPass);
+	void verifyAccountCredentials(std::string userName, std::string hashedPass);
+	void verifyAccountUniqueness(std::string userName, std::string email="");
 };
 

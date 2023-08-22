@@ -1,9 +1,11 @@
-C:\Users\mario\source\repos\Tomkode\RedditClone\Service.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\Service.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\SignUpWindow.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\SignUpWindow.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\LogInWindow.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\LogInWindow.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\Reddit69.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\Reddit69.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\main.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\main.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\rcc\qrc_Reddit69.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\qrc_Reddit69.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\moc\moc_Reddit69.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\moc_Reddit69.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\moc\moc_LogInWindow.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\moc_LogInWindow.obj
-C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\moc\moc_SignUpWindow.cpp;C:\Users\mario\source\repos\Tomkode\RedditClone\x64\Debug\moc_SignUpWindow.obj
+D:\C++ Projects\Reddit Clone\Service.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\Service.obj
+D:\C++ Projects\Reddit Clone\SignUpWindow.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\SignUpWindow.obj
+D:\C++ Projects\Reddit Clone\Validator.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\Validator.obj
+D:\C++ Projects\Reddit Clone\ValidatorException.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\ValidatorException.obj
+D:\C++ Projects\Reddit Clone\LogInWindow.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\LogInWindow.obj
+D:\C++ Projects\Reddit Clone\Reddit69.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\Reddit69.obj
+D:\C++ Projects\Reddit Clone\main.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\main.obj
+D:\C++ Projects\Reddit Clone\x64\Debug\rcc\qrc_Reddit69.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\qrc_Reddit69.obj
+D:\C++ Projects\Reddit Clone\x64\Debug\moc\moc_Reddit69.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\moc_Reddit69.obj
+D:\C++ Projects\Reddit Clone\x64\Debug\moc\moc_LogInWindow.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\moc_LogInWindow.obj
+D:\C++ Projects\Reddit Clone\x64\Debug\moc\moc_SignUpWindow.cpp;D:\C++ Projects\Reddit Clone\x64\Debug\moc_SignUpWindow.obj

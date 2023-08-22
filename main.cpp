@@ -3,7 +3,7 @@
 #include "LogInWindow.h"
 #include "SignUpWindow.h"
 
-int main(int argc, char *argv[])
+int app(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Service service;
@@ -13,4 +13,10 @@ int main(int argc, char *argv[])
     signup->setParent(login);
     login->show();
     return a.exec();
+}
+
+int main(int argc, char* argv[])
+{
+    app(argc, argv);
+    _CrtDumpMemoryLeaks();
 }
