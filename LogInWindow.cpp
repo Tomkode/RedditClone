@@ -24,7 +24,22 @@ void LogInWindow::initLogInWindow()
 	ui.logoLabel->setMask(pixmap.mask());
 	ui.logoLabel->show();
 	ui.logoLabel->setScaledContents(true);
-	ui.passwordLineEdit->setEchoMode(QLineEdit::Password);
+	
+	userNameLineEdit = new MyLineEdit();
+	passwordLineEdit = new MyLineEdit();
+	passwordLineEdit->setEchoMode(QLineEdit::Password);
+	userNameLineEdit->setPlaceholderText("Username");
+	passwordLineEdit->setPlaceholderText("Password");
+	userNameLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+	passwordLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+
+	QSize lineEditSize(100,30);
+	passwordLineEdit->setMinimumSize(lineEditSize);
+	userNameLineEdit->setMinimumSize(lineEditSize);
+	this->ui.lineEditLayout->addWidget(userNameLineEdit);
+	this->ui.lineEditLayout->addWidget(passwordLineEdit);
+
+	errorLabel = new QLabel();
 	connectSignalsAndSlots();
 }
 
@@ -32,32 +47,56 @@ void LogInWindow::connectSignalsAndSlots()
 {
 	connect(this->ui.logInButton, &QAbstractButton::clicked, this, &LogInWindow::logIn);
 	connect(this->ui.signUpButton, &QAbstractButton::clicked, this, &LogInWindow::signUp);
+	connect(this->passwordLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+	connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+
 }
 
 void LogInWindow::logIn()
 {
-	this->ui.errorLabel->setText("");
-	string userName = this->ui.userNameLineEdit->text().toLocal8Bit().constData();
-	string password = this->ui.passwordLineEdit->text().toLocal8Bit().constData();
-	if (userName == "" || password == "")
+	try {
+		delete errorLabel;
+	}
+	catch (exception& error)
 	{
-		this->ui.errorLabel->setText("You must fill in both fields!");
+		;
+	}
+	string username = this->userNameLineEdit->text().toLocal8Bit().constData();
+	string password = this->passwordLineEdit->text().toLocal8Bit().constData();
+	if (username == "" || password == "")
+	{
+		errorLabel = new QLabel();
+		this->ui.buttonsLayout->insertWidget(0, errorLabel);
+		errorLabel->setText("You must fill in both fields!");
 		return;
 	}
 	try {
-		service.verifyAccountCredentials(userName, service.hashToSHA256(password));
-		this->ui.errorLabel->setText("Granted access!");
+		service.verifyAccountCredentials(username, service.hashToSHA256(password));
+		errorLabel = new QLabel();
+		this->ui.buttonsLayout->insertWidget(0, errorLabel);
+		errorLabel->setText("Granted access!");
 	}
 	catch (InexistentAcccountException& err) {
-		this->ui.errorLabel->setText("The account doesn't exist.Create one or reset your password!");
+		errorLabel = new QLabel();
+		this->ui.buttonsLayout->insertWidget(0, errorLabel);
+		errorLabel->setText("We couldn't verify your account.");
 	}
 
 }
 
 void LogInWindow::signUp()
 {
-	this->ui.userNameLineEdit->clear();
-	this->ui.passwordLineEdit->clear();
+	this->userNameLineEdit->clear();
+	this->passwordLineEdit->clear();
+	delete errorLabel;
 	this->signUpWindow->show();
 	this->hide();
+}
+
+void LogInWindow::lineEditClicked(bool hasFocus, MyLineEdit* lineEdit)
+{
+	if (hasFocus)
+		lineEdit->setStyleSheet("QLineEdit{border: 1px solid #d93a00;border-radius: 13px;}");
+	else
+		lineEdit->setStyleSheet("QLineEdit{ border: 1px solid #808080; border-radius: 13px; }"); 
 }

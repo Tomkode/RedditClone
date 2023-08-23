@@ -26,6 +26,7 @@ void SignUpWindow::initSignUpWindow()
 	ui.logoLabel->setScaledContents(true);
 	ui.passwordLineEdit->setEchoMode(QLineEdit::Password);
 	ui.confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
+
 }
 
 void SignUpWindow::signUpUser()

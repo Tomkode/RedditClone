@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SignUpWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.0
+** Created by: Qt User Interface Compiler version 6.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -15,11 +15,9 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -33,8 +31,10 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer_3;
     QLabel *logoLabel;
     QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_2;
     QLineEdit *userNameLineEdit;
     QLabel *userNameErrorLabel;
     QLineEdit *emailLineEdit;
@@ -48,16 +48,15 @@ public:
     QPushButton *signUpButton;
     QPushButton *logInButton;
     QSpacerItem *horizontalSpacer_2;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *SignUpWindowClass)
     {
         if (SignUpWindowClass->objectName().isEmpty())
             SignUpWindowClass->setObjectName("SignUpWindowClass");
-        SignUpWindowClass->resize(517, 484);
-        SignUpWindowClass->setMinimumSize(QSize(400, 300));
+        SignUpWindowClass->resize(325, 496);
+        SignUpWindowClass->setMinimumSize(QSize(325, 496));
+        SignUpWindowClass->setMaximumSize(QSize(325, 496));
         SignUpWindowClass->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         centralWidget = new QWidget(SignUpWindowClass);
         centralWidget->setObjectName("centralWidget");
@@ -68,23 +67,34 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalSpacer = new QSpacerItem(138, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_3);
+
         logoLabel = new QLabel(centralWidget);
         logoLabel->setObjectName("logoLabel");
         logoLabel->setMinimumSize(QSize(200, 40));
         logoLabel->setMaximumSize(QSize(200, 100));
+        logoLabel->setLayoutDirection(Qt::LeftToRight);
+        logoLabel->setScaledContents(true);
+        logoLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        verticalLayout_2->addWidget(logoLabel);
+        verticalLayout_2->addWidget(logoLabel, 0, Qt::AlignHCenter);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName("verticalLayout");
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout->addItem(verticalSpacer_2);
+
         userNameLineEdit = new QLineEdit(centralWidget);
         userNameLineEdit->setObjectName("userNameLineEdit");
 
@@ -151,7 +161,7 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_2);
 
-        horizontalSpacer_2 = new QSpacerItem(148, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
@@ -159,13 +169,6 @@ public:
         horizontalLayout_2->addLayout(horizontalLayout);
 
         SignUpWindowClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(SignUpWindowClass);
-        menuBar->setObjectName("menuBar");
-        menuBar->setGeometry(QRect(0, 0, 517, 22));
-        SignUpWindowClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(SignUpWindowClass);
-        mainToolBar->setObjectName("mainToolBar");
-        SignUpWindowClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(SignUpWindowClass);
         statusBar->setObjectName("statusBar");
         SignUpWindowClass->setStatusBar(statusBar);

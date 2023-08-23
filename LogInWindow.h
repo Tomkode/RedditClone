@@ -4,6 +4,7 @@
 #include "ui_LogInWindow.h"
 #include <QMessageBox>
 #include "Service.h"
+#include "MyLineEdit.h"
 class LogInWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -14,6 +15,9 @@ public:
 	void setChild(QWidget* w);
 
 private:
+	MyLineEdit* userNameLineEdit;
+	MyLineEdit* passwordLineEdit;
+	QLabel* errorLabel;
 	Ui::LogInWindowClass ui;
 	QWidget* signUpWindow;
 	Service& service;
@@ -21,4 +25,5 @@ private:
 	void connectSignalsAndSlots();
 	void logIn();
 	void signUp();
+	void lineEditClicked(bool hasFocus, MyLineEdit* lineEdit);
 };
