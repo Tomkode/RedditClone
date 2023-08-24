@@ -9,7 +9,9 @@ int app(int argc, char *argv[])
     Service service;
     LogInWindow* login = new LogInWindow(service);
     SignUpWindow* signup = new SignUpWindow(service);
+    ForgotPassword* forgor = new ForgotPassword;
     login->setChild(signup);
+    login->setForgotPasswordWindow(forgor);
     signup->setParent(login);
     login->show();
     return a.exec();

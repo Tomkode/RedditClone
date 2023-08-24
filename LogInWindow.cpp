@@ -17,6 +17,11 @@ void LogInWindow::setChild(QWidget* w) {
 	this->signUpWindow = w;
 }
 
+void LogInWindow::setForgotPasswordWindow(QWidget* w)
+{
+	this->forgotPasswordWindow = w;
+}
+
 void LogInWindow::initLogInWindow()
 {
 	QPixmap pixmap("images\\Reddit Logo");
@@ -45,20 +50,16 @@ void LogInWindow::connectSignalsAndSlots()
 {
 	connect(this->ui.logInButton, &QAbstractButton::clicked, this, &LogInWindow::logIn);
 	connect(this->ui.signUpButton, &QAbstractButton::clicked, this, &LogInWindow::signUp);
-	QObject::connect(this->passwordLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
-	QObject::connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+	connect(this->passwordLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+	connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+	connect(this->ui.forgotPasswordLabel, &ClickableLabel::clicked, this, &LogInWindow::forgotPassword);
 
 }
 
 void LogInWindow::logIn()
 {
-	try {
+	if (errorLabel != nullptr)
 		delete errorLabel;
-	}
-	catch (exception& error)
-	{
-		;
-	}
 	string username = this->userNameLineEdit->text().toLocal8Bit().constData();
 	string password = this->passwordLineEdit->text().toLocal8Bit().constData();
 	if (username == "" || password == "")
@@ -86,7 +87,8 @@ void LogInWindow::signUp()
 {
 	this->userNameLineEdit->clear();
 	this->passwordLineEdit->clear();
-	delete errorLabel;
+	if(errorLabel != nullptr)
+		delete errorLabel;
 	this->signUpWindow->show();
 	this->hide();
 }
@@ -97,4 +99,9 @@ void LogInWindow::lineEditClicked(bool hasFocus, MyLineEdit* lineEdit)
 		lineEdit->setStyleSheet("QLineEdit{border: 1px solid #d93a00;border-radius: 13px;}");
 	else
 		lineEdit->setStyleSheet("QLineEdit{ border: 1px solid #808080; border-radius: 13px; }"); 
+}
+
+void LogInWindow::forgotPassword()
+{
+	this->forgotPasswordWindow->show();
 }

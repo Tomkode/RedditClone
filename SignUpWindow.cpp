@@ -95,34 +95,40 @@ void SignUpWindow::signUpUser()
 	}
 	catch (InvalidUsernameException& err) {
 		userNameErrorLabel = new QLabel;
+		userNameErrorLabel->setWordWrap(1);
 		this->userNameErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(1, userNameErrorLabel);
 	}
 	catch (ExistentUsernameException& err)
 	{
 		userNameErrorLabel = new QLabel;
+		userNameErrorLabel->setWordWrap(1);
 		this->userNameErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(1, userNameErrorLabel);
 	}
 	catch (InvalidEmailException& err) {
 		emailErrorLabel = new QLabel;
+		emailErrorLabel->setWordWrap(1);
 		this->emailErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(2, emailErrorLabel);
 	}
 	catch (ExistentEmailException& err)
 	{
 		emailErrorLabel = new QLabel;
+		emailErrorLabel->setWordWrap(1);
 		this->emailErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(2, emailErrorLabel);
 	}
 	catch (InvalidPasswordException& err) {
 		passwordErrorLabel = new QLabel;
+		passwordErrorLabel->setWordWrap(1);
 		this->passwordErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(3, passwordErrorLabel);
 	}
 	
 	catch (DifferentPasswordsException& err) {
 		confirmPasswordErrorLabel = new QLabel;
+		confirmPasswordErrorLabel->setWordWrap(1);
 		this->confirmPasswordErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(4, confirmPasswordErrorLabel);
 	}	

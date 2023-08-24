@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'LogInWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -20,6 +20,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "ClickableLabel.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -37,6 +38,7 @@ public:
     QSpacerItem *verticalSpacer_2;
     QVBoxLayout *lineEditLayout;
     QSpacerItem *verticalSpacer_4;
+    ClickableLabel *forgotPasswordLabel;
     QVBoxLayout *buttonsLayout;
     QPushButton *logInButton;
     QHBoxLayout *horizontalLayout_2;
@@ -101,6 +103,12 @@ public:
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_4);
+
+        forgotPasswordLabel = new ClickableLabel(centralWidget);
+        forgotPasswordLabel->setObjectName("forgotPasswordLabel");
+        forgotPasswordLabel->setOpenExternalLinks(false);
+
+        verticalLayout->addWidget(forgotPasswordLabel);
 
         buttonsLayout = new QVBoxLayout();
         buttonsLayout->setSpacing(6);
@@ -202,6 +210,7 @@ public:
     {
         LogInWindowClass->setWindowTitle(QCoreApplication::translate("LogInWindowClass", "LogInWindow", nullptr));
         logoLabel->setText(QCoreApplication::translate("LogInWindowClass", "<html><head/><body><p><img src=\":/Reddit69/images/Reddit Logo\"/></p></body></html>", nullptr));
+        forgotPasswordLabel->setText(QCoreApplication::translate("LogInWindowClass", "Forgor password?", nullptr));
         logInButton->setText(QCoreApplication::translate("LogInWindowClass", "Log In", nullptr));
         label->setText(QCoreApplication::translate("LogInWindowClass", "OR", nullptr));
         signUpButton->setText(QCoreApplication::translate("LogInWindowClass", "Sign Up", nullptr));

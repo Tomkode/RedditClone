@@ -64,6 +64,12 @@
     <ClCompile Include="MyLineEdit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ClickableLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ForgotPassword.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LogInWindow.h">
@@ -75,12 +81,21 @@
     <QtMoc Include="MyLineEdit.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ClickableLabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ForgotPassword.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LogInWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="SignUpWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ForgotPassword.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

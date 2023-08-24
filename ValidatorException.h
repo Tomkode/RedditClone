@@ -12,7 +12,7 @@ class InvalidUsernameException : public IncorrectCredentialsException
 {
 public:
 	const char* what() const  override{
-		return "Username lenght must be between 3-20 and it can only contain letters,digits and underscore!";
+		return "Username length must be between 3-20 and it can only contain letters,digits and underscore!";
 	}
 };
 class InvalidEmailException : public IncorrectCredentialsException
