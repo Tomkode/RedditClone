@@ -104,6 +104,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MyLineEdit.cpp" />
     <ClCompile Include="Service.cpp" />
     <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="User.cpp" />
@@ -126,6 +127,7 @@
     <QtMoc Include="SignUpWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="MyLineEdit.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="userRepository.h" />

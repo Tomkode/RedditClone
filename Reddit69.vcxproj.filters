@@ -61,12 +61,18 @@
     <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MyLineEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LogInWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SignUpWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MyLineEdit.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

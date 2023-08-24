@@ -24,7 +24,6 @@ void LogInWindow::initLogInWindow()
 	ui.logoLabel->setMask(pixmap.mask());
 	ui.logoLabel->show();
 	ui.logoLabel->setScaledContents(true);
-	
 	userNameLineEdit = new MyLineEdit();
 	passwordLineEdit = new MyLineEdit();
 	passwordLineEdit->setEchoMode(QLineEdit::Password);
@@ -33,12 +32,11 @@ void LogInWindow::initLogInWindow()
 	userNameLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
 	passwordLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
 
-	QSize lineEditSize(100,30);
+	QSize lineEditSize(100, 30);
 	passwordLineEdit->setMinimumSize(lineEditSize);
 	userNameLineEdit->setMinimumSize(lineEditSize);
 	this->ui.lineEditLayout->addWidget(userNameLineEdit);
 	this->ui.lineEditLayout->addWidget(passwordLineEdit);
-
 	errorLabel = new QLabel();
 	connectSignalsAndSlots();
 }
@@ -47,8 +45,8 @@ void LogInWindow::connectSignalsAndSlots()
 {
 	connect(this->ui.logInButton, &QAbstractButton::clicked, this, &LogInWindow::logIn);
 	connect(this->ui.signUpButton, &QAbstractButton::clicked, this, &LogInWindow::signUp);
-	connect(this->passwordLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
-	connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+	QObject::connect(this->passwordLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
+	QObject::connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &LogInWindow::lineEditClicked);
 
 }
 

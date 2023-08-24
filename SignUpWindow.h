@@ -3,7 +3,7 @@
 #include <QMainWindow>
 #include "ui_SignUpWindow.h"
 #include "Service.h"
-
+#include "MyLineEdit.h"
 class SignUpWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -13,6 +13,11 @@ public:
 	~SignUpWindow();
 	void setParent(QWidget* w);
 private:
+	MyLineEdit* userNameLineEdit;
+	MyLineEdit* passwordLineEdit;
+	MyLineEdit* confirmPasswordLineEdit;
+	MyLineEdit* emailLineEdit;
+	QLabel* errorLabel;
 	Service& service;
 	Ui::SignUpWindowClass ui;
 	QWidget* logInWindow;
@@ -20,4 +25,5 @@ private:
 	void signUpUser();
 	void connectSignalsAndSlots();
 	void switchWindows();
+	void lineEditClicked(bool hasFocus, MyLineEdit* lineEdit);
 };

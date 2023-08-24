@@ -24,8 +24,30 @@ void SignUpWindow::initSignUpWindow()
 	ui.logoLabel->setMask(pixmap.mask());
 	ui.logoLabel->show();
 	ui.logoLabel->setScaledContents(true);
-	ui.passwordLineEdit->setEchoMode(QLineEdit::Password);
-	ui.confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
+	passwordLineEdit = new MyLineEdit();
+	confirmPasswordLineEdit = new MyLineEdit();
+	emailLineEdit = new MyLineEdit();
+	userNameLineEdit = new MyLineEdit();
+	passwordLineEdit->setEchoMode(QLineEdit::Password);
+	confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
+	userNameLineEdit->setPlaceholderText("Username");
+	passwordLineEdit->setPlaceholderText("Password");
+	emailLineEdit->setPlaceholderText("Email");
+	confirmPasswordLineEdit->setPlaceholderText("Confirm Password");
+	userNameLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+	passwordLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+	confirmPasswordLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+	emailLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+
+	QSize lineEditSize(100, 30);
+	passwordLineEdit->setMinimumSize(lineEditSize);
+	userNameLineEdit->setMinimumSize(lineEditSize);
+	emailLineEdit->setMinimumSize(lineEditSize);
+	confirmPasswordLineEdit->setMinimumSize(lineEditSize);
+	this->ui.lineEditLayout->addWidget(userNameLineEdit);
+	this->ui.lineEditLayout->addWidget(passwordLineEdit);
+	passwordLineEdit->setEchoMode(QLineEdit::Password);
+	confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
 
 }
 
@@ -36,10 +58,10 @@ void SignUpWindow::signUpUser()
 	this->ui.emailErrorLabel->setText("");
 	this->ui.passwordErrorLabel->setText("");
 	this->ui.confirmPasswordErrorLabel->setText("");
-	string userName = this->ui.userNameLineEdit->text().toLocal8Bit().constData();
-	string password = this->ui.passwordLineEdit->text().toLocal8Bit().constData();
-	string email = this->ui.emailLineEdit->text().toLocal8Bit().constData();
-	string confirmPassword = this->ui.confirmPasswordLineEdit->text().toLocal8Bit().constData();
+	string userName = this->userNameLineEdit->text().toLocal8Bit().constData();
+	string password = this->passwordLineEdit->text().toLocal8Bit().constData();
+	string email = this->emailLineEdit->text().toLocal8Bit().constData();
+	string confirmPassword = this->confirmPasswordLineEdit->text().toLocal8Bit().constData();
 	try {
 		service.createUserAccount(userName, password, confirmPassword, email);
 
@@ -79,14 +101,26 @@ void SignUpWindow::connectSignalsAndSlots()
 {
 	connect(this->ui.signUpButton, &QPushButton::clicked, this, &SignUpWindow::signUpUser);
 	connect(this->ui.logInButton, &QPushButton::clicked, this, &SignUpWindow::switchWindows);
+	connect(this->passwordLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
+	connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
+	connect(this->confirmPasswordLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
+	connect(this->emailLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
 }
 
 void SignUpWindow::switchWindows()
 {
-	this->ui.userNameLineEdit->clear();
-	this->ui.passwordLineEdit->clear();
-	this->ui.emailLineEdit->clear();
-	this->ui.confirmPasswordLineEdit->clear();
+	this->userNameLineEdit->clear();
+	this->passwordLineEdit->clear();
+	this->emailLineEdit->clear();
+	this->confirmPasswordLineEdit->clear();
 	this->logInWindow->show();
 	this->hide();
+}
+
+void SignUpWindow::lineEditClicked(bool hasFocus, MyLineEdit* lineEdit)
+{
+	if (hasFocus)
+		lineEdit->setStyleSheet("QLineEdit{border: 1px solid #d93a00;border-radius: 13px;}");
+	else
+		lineEdit->setStyleSheet("QLineEdit{ border: 1px solid #808080; border-radius: 13px; }");
 }
