@@ -23,7 +23,7 @@ void SignUpWindow::initSignUpWindow()
 	ui.logoLabel->setPixmap(pixmap);
 	ui.logoLabel->setMask(pixmap.mask());
 	ui.logoLabel->show();
-	ui.logoLabel->setScaledContents(true);
+
 	passwordLineEdit = new MyLineEdit();
 	confirmPasswordLineEdit = new MyLineEdit();
 	emailLineEdit = new MyLineEdit();
@@ -98,6 +98,8 @@ void SignUpWindow::signUpUser()
 		userNameErrorLabel->setWordWrap(1);
 		this->userNameErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(1, userNameErrorLabel);
+		QSize size = this->userNameErrorLabel->size();
+		this->setFixedHeight(size.height());
 	}
 	catch (ExistentUsernameException& err)
 	{
@@ -105,12 +107,16 @@ void SignUpWindow::signUpUser()
 		userNameErrorLabel->setWordWrap(1);
 		this->userNameErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(1, userNameErrorLabel);
+		QSize size = this->userNameErrorLabel->size();
+		this->setFixedHeight(size.height());
 	}
 	catch (InvalidEmailException& err) {
 		emailErrorLabel = new QLabel;
 		emailErrorLabel->setWordWrap(1);
 		this->emailErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(2, emailErrorLabel);
+		QSize size = this->emailErrorLabel->size();
+		this->setFixedHeight(size.height());
 	}
 	catch (ExistentEmailException& err)
 	{
@@ -118,12 +124,16 @@ void SignUpWindow::signUpUser()
 		emailErrorLabel->setWordWrap(1);
 		this->emailErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(2, emailErrorLabel);
+		QSize size = this->emailErrorLabel->size();
+		this->setFixedHeight(size.height());
 	}
 	catch (InvalidPasswordException& err) {
 		passwordErrorLabel = new QLabel;
 		passwordErrorLabel->setWordWrap(1);
 		this->passwordErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(3, passwordErrorLabel);
+		QSize size = this->passwordErrorLabel->size();
+		this->setFixedHeight(size.height());
 	}
 	
 	catch (DifferentPasswordsException& err) {
@@ -131,6 +141,8 @@ void SignUpWindow::signUpUser()
 		confirmPasswordErrorLabel->setWordWrap(1);
 		this->confirmPasswordErrorLabel->setText(err.what());
 		this->ui.lineEditLayout->insertWidget(4, confirmPasswordErrorLabel);
+		QSize size = this->passwordErrorLabel->size();
+		this->setFixedHeight(size.height());
 	}	
 	catch (exception& err)
 	{
@@ -149,6 +161,8 @@ void SignUpWindow::connectSignalsAndSlots()
 	connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
 	connect(this->confirmPasswordLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
 	connect(this->emailLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
+	connect(this->passwordLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::passwordChecker);
+
 }
 
 void SignUpWindow::switchWindows()
@@ -167,4 +181,9 @@ void SignUpWindow::lineEditClicked(bool hasFocus, MyLineEdit* lineEdit)
 		lineEdit->setStyleSheet("QLineEdit{border: 1px solid #d93a00;border-radius: 13px;}");
 	else
 		lineEdit->setStyleSheet("QLineEdit{ border: 1px solid #808080; border-radius: 13px; }");
+}
+
+void SignUpWindow::passwordChecker()
+{
+
 }

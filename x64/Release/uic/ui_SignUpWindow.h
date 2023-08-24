@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SignUpWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.0
+** Created by: Qt User Interface Compiler version 6.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -46,9 +46,9 @@ public:
     {
         if (SignUpWindowClass->objectName().isEmpty())
             SignUpWindowClass->setObjectName("SignUpWindowClass");
-        SignUpWindowClass->resize(325, 496);
-        SignUpWindowClass->setMinimumSize(QSize(325, 496));
-        SignUpWindowClass->setMaximumSize(QSize(325, 496));
+        SignUpWindowClass->resize(325, 450);
+        SignUpWindowClass->setMinimumSize(QSize(325, 450));
+        SignUpWindowClass->setMaximumSize(QSize(325, 450));
         SignUpWindowClass->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         centralWidget = new QWidget(SignUpWindowClass);
         centralWidget->setObjectName("centralWidget");
@@ -66,21 +66,21 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         verticalLayout_2->addItem(verticalSpacer_3);
 
         logoLabel = new QLabel(centralWidget);
         logoLabel->setObjectName("logoLabel");
-        logoLabel->setMinimumSize(QSize(200, 40));
-        logoLabel->setMaximumSize(QSize(200, 100));
+        logoLabel->setMinimumSize(QSize(230, 98));
+        logoLabel->setMaximumSize(QSize(200, 85));
         logoLabel->setLayoutDirection(Qt::LeftToRight);
-        logoLabel->setScaledContents(true);
+        logoLabel->setScaledContents(false);
         logoLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         verticalLayout_2->addWidget(logoLabel, 0, Qt::AlignHCenter);
 
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_4 = new QSpacerItem(20, 30, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_2->addItem(verticalSpacer_4);
 
@@ -93,7 +93,7 @@ public:
 
         verticalLayout->addLayout(lineEditLayout);
 
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Maximum);
+        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         verticalLayout->addItem(verticalSpacer);
 
@@ -155,7 +155,7 @@ public:
     void retranslateUi(QMainWindow *SignUpWindowClass)
     {
         SignUpWindowClass->setWindowTitle(QCoreApplication::translate("SignUpWindowClass", "SignUpWindow", nullptr));
-        logoLabel->setText(QString());
+        logoLabel->setText(QCoreApplication::translate("SignUpWindowClass", "<html><head/><body><p><img src=\":/Reddit69/images/Reddit Logo.png\"/></p></body></html>", nullptr));
         signUpButton->setText(QCoreApplication::translate("SignUpWindowClass", "Sign Up", nullptr));
         logInButton->setText(QCoreApplication::translate("SignUpWindowClass", "Log In", nullptr));
     } // retranslateUi

@@ -30,4 +30,5 @@ private:
 	void connectSignalsAndSlots();
 	void switchWindows();
 	void lineEditClicked(bool hasFocus, MyLineEdit* lineEdit);
+	void passwordChecker();
 };

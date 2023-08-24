@@ -42,7 +42,7 @@ void LogInWindow::initLogInWindow()
 	userNameLineEdit->setMinimumSize(lineEditSize);
 	this->ui.lineEditLayout->addWidget(userNameLineEdit);
 	this->ui.lineEditLayout->addWidget(passwordLineEdit);
-	errorLabel = new QLabel();
+	errorLabel = nullptr;
 	connectSignalsAndSlots();
 }
 
@@ -59,7 +59,10 @@ void LogInWindow::connectSignalsAndSlots()
 void LogInWindow::logIn()
 {
 	if (errorLabel != nullptr)
+	{
 		delete errorLabel;
+		errorLabel = nullptr;
+	}
 	string username = this->userNameLineEdit->text().toLocal8Bit().constData();
 	string password = this->passwordLineEdit->text().toLocal8Bit().constData();
 	if (username == "" || password == "")
@@ -87,8 +90,11 @@ void LogInWindow::signUp()
 {
 	this->userNameLineEdit->clear();
 	this->passwordLineEdit->clear();
-	if(errorLabel != nullptr)
+	if (errorLabel != nullptr)
+	{
 		delete errorLabel;
+		errorLabel = nullptr;
+	}
 	this->signUpWindow->show();
 	this->hide();
 }

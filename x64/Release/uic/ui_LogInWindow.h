@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'LogInWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.0
+** Created by: Qt User Interface Compiler version 6.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -80,9 +80,9 @@ public:
 
         logoLabel = new QLabel(centralWidget);
         logoLabel->setObjectName("logoLabel");
-        logoLabel->setMinimumSize(QSize(220, 0));
+        logoLabel->setMinimumSize(QSize(230, 98));
         logoLabel->setMaximumSize(QSize(200, 100));
-        logoLabel->setScaledContents(true);
+        logoLabel->setScaledContents(false);
 
         verticalLayout_2->addWidget(logoLabel, 0, Qt::AlignHCenter);
 
