@@ -45,19 +45,43 @@ void SignUpWindow::initSignUpWindow()
 	emailLineEdit->setMinimumSize(lineEditSize);
 	confirmPasswordLineEdit->setMinimumSize(lineEditSize);
 	this->ui.lineEditLayout->addWidget(userNameLineEdit);
+	this->ui.lineEditLayout->addWidget(emailLineEdit);
 	this->ui.lineEditLayout->addWidget(passwordLineEdit);
+	this->ui.lineEditLayout->addWidget(confirmPasswordLineEdit);
 	passwordLineEdit->setEchoMode(QLineEdit::Password);
 	confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
+
+
+	userNameErrorLabel = nullptr;
+	passwordErrorLabel = nullptr;
+	emailErrorLabel = nullptr;
+	confirmPasswordErrorLabel = nullptr;
 
 }
 
 void SignUpWindow::signUpUser()
 {
-	//clear the error labels 69
-	this->ui.userNameErrorLabel->setText("");
-	this->ui.emailErrorLabel->setText("");
-	this->ui.passwordErrorLabel->setText("");
-	this->ui.confirmPasswordErrorLabel->setText("");
+	
+	if (userNameErrorLabel != nullptr) {
+		delete userNameErrorLabel;
+		userNameErrorLabel = nullptr;
+	}
+		if (passwordErrorLabel != nullptr) {
+			delete passwordErrorLabel;
+			passwordErrorLabel = nullptr;
+		}
+		if (emailErrorLabel != nullptr) {
+			delete emailErrorLabel;
+			emailErrorLabel = nullptr;
+		}
+		if (confirmPasswordErrorLabel != nullptr) {
+			delete confirmPasswordErrorLabel;
+			confirmPasswordErrorLabel = nullptr;
+		}
+	
+	/*this->emailErrorLabel->setText("");
+	this->passwordErrorLabel->setText("");
+	this->confirmPasswordErrorLabel->setText("");*/
 	string userName = this->userNameLineEdit->text().toLocal8Bit().constData();
 	string password = this->passwordLineEdit->text().toLocal8Bit().constData();
 	string email = this->emailLineEdit->text().toLocal8Bit().constData();
@@ -70,28 +94,42 @@ void SignUpWindow::signUpUser()
 		this->switchWindows();
 	}
 	catch (InvalidUsernameException& err) {
-		this->ui.userNameErrorLabel->setText(err.what());
-	}
-	catch (InvalidPasswordException& err) {
-		this->ui.passwordErrorLabel->setText(err.what());
-	}
-	catch (InvalidEmailException& err) {
-		this->ui.emailErrorLabel->setText(err.what());
-	}
-	catch (DifferentPasswordsException& err) {
-		this->ui.confirmPasswordErrorLabel->setText(err.what());
+		userNameErrorLabel = new QLabel;
+		this->userNameErrorLabel->setText(err.what());
+		this->ui.lineEditLayout->insertWidget(1, userNameErrorLabel);
 	}
 	catch (ExistentUsernameException& err)
 	{
-		this->ui.userNameErrorLabel->setText(err.what());
+		userNameErrorLabel = new QLabel;
+		this->userNameErrorLabel->setText(err.what());
+		this->ui.lineEditLayout->insertWidget(1, userNameErrorLabel);
+	}
+	catch (InvalidEmailException& err) {
+		emailErrorLabel = new QLabel;
+		this->emailErrorLabel->setText(err.what());
+		this->ui.lineEditLayout->insertWidget(2, emailErrorLabel);
 	}
 	catch (ExistentEmailException& err)
 	{
-		this->ui.emailErrorLabel->setText(err.what());
+		emailErrorLabel = new QLabel;
+		this->emailErrorLabel->setText(err.what());
+		this->ui.lineEditLayout->insertWidget(2, emailErrorLabel);
 	}
+	catch (InvalidPasswordException& err) {
+		passwordErrorLabel = new QLabel;
+		this->passwordErrorLabel->setText(err.what());
+		this->ui.lineEditLayout->insertWidget(3, passwordErrorLabel);
+	}
+	
+	catch (DifferentPasswordsException& err) {
+		confirmPasswordErrorLabel = new QLabel;
+		this->confirmPasswordErrorLabel->setText(err.what());
+		this->ui.lineEditLayout->insertWidget(4, confirmPasswordErrorLabel);
+	}	
 	catch (exception& err)
 	{
-		this->ui.generalErrorLabel->setText("Unknown Error");
+		/*this->.generalErrorLabel->setText("Unknown Error");*/
+		;
 	}
 	//after creating the account,close this window and redirect the user to the login window
 

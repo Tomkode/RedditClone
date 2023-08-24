@@ -17,7 +17,11 @@ private:
 	MyLineEdit* passwordLineEdit;
 	MyLineEdit* confirmPasswordLineEdit;
 	MyLineEdit* emailLineEdit;
-	QLabel* errorLabel;
+	QLabel* userNameErrorLabel;
+	QLabel* emailErrorLabel;
+	QLabel* passwordErrorLabel;
+	QLabel* confirmPasswordErrorLabel;
+
 	Service& service;
 	Ui::SignUpWindowClass ui;
 	QWidget* logInWindow;
