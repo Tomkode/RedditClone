@@ -26,8 +26,7 @@ public:
 	void addUser(User newUser);
 	User getUserByUsername(std::string username);
 	User getUsersByEmail(std::string email);
-
-	
-
+	bool isUserByUsername(std::string username);
+	bool isUserByEmail(std::string email);
 };
 

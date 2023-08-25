@@ -44,6 +44,7 @@ void LogInWindow::initLogInWindow()
 	this->ui.lineEditLayout->addWidget(passwordLineEdit);
 	errorLabel = nullptr;
 	connectSignalsAndSlots();
+
 }
 
 void LogInWindow::connectSignalsAndSlots()

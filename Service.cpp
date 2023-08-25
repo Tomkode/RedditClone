@@ -54,3 +54,33 @@ void Service::verifyAccountUniqueness(std::string userName, std::string email)
 		throw ExistentEmailException();
 }
 
+void Service::verifyUsername(std::string userName)
+{
+	Validator v;
+	v.isValidUsername(userName);
+	if(this->userRepository.isUserByUsername(userName))
+		throw ExistentUsernameException();
+}
+
+void Service::verifyEmail(std::string email)
+{
+	Validator v;
+	v.isValidEmail(email);
+	if (userRepository.isUserByEmail(email))
+		throw ExistentEmailException();
+}
+
+void Service::verifyPassword(std::string password)
+{
+	Validator v;
+	v.isValidPassword(password);
+}
+
+void Service::verifyConfirmPassword(std::string password, std::string confirmPassword)
+{
+	Validator v;
+	v.arePasswordsEqual(password, confirmPassword);
+}
+
+
+

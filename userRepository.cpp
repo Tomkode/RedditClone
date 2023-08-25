@@ -74,3 +74,50 @@ User userRepository::getUsersByEmail(std::string email)
         return User();
     }
 }
+
+bool userRepository::isUserByUsername(std::string username)
+{
+    makeConnection();
+    connection->setSchema("Reddit");
+    sql::PreparedStatement* prep_stmt;
+    sql::ResultSet* res;
+    prep_stmt = connection->prepareStatement("SELECT * FROM users WHERE username = ?");
+    prep_stmt->setString(1, username);
+    res = prep_stmt->executeQuery();
+    if (res->next())
+    {
+       
+        delete prep_stmt;
+        closeConnection();
+        return true;
+    }
+    else
+    {
+        delete prep_stmt;
+        closeConnection();
+        return false;
+    }
+}
+
+bool userRepository::isUserByEmail(std::string email)
+{
+    makeConnection();
+    connection->setSchema("Reddit");
+    sql::PreparedStatement* prep_stmt;
+    sql::ResultSet* res;
+    prep_stmt = connection->prepareStatement("SELECT * FROM users WHERE email = ?");
+    prep_stmt->setString(1, email);
+    res = prep_stmt->executeQuery();
+    if (res->next())
+    {
+        delete prep_stmt;
+        closeConnection();
+        return true;
+    }
+    else
+    {
+        delete prep_stmt;
+        closeConnection();
+        return false;
+    }
+}

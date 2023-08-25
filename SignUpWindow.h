@@ -21,6 +21,7 @@ private:
 	QLabel* emailErrorLabel;
 	QLabel* passwordErrorLabel;
 	QLabel* confirmPasswordErrorLabel;
+	std::vector<int> windowChanges;
 
 	Service& service;
 	Ui::SignUpWindowClass ui;
@@ -31,4 +32,7 @@ private:
 	void switchWindows();
 	void lineEditClicked(bool hasFocus, MyLineEdit* lineEdit);
 	void passwordChecker();
+	void userNameChecker();
+	void emailChecker();
+	void confirmPasswordChecker();
 };

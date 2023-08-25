@@ -38,7 +38,7 @@ public:
 };
 
 
-class InexistentAcccountException : public std::exception
+class InexistentAcccountException : public IncorrectCredentialsException
 {
 public:
 	const char* what() {
@@ -47,13 +47,13 @@ public:
 };
 
 
-class SignUpException:  public std::exception
+class SignUpException: public IncorrectCredentialsException
 {
 	const char* what() const override {
 		return "Couldn't sign up";
 	}
 };
-class ExistentUsernameException : public SignUpException
+class ExistentUsernameException : public IncorrectCredentialsException
 {
 public:
 	const char* what() const override
@@ -62,7 +62,7 @@ public:
 	}
 };
 
-class ExistentEmailException : public SignUpException
+class ExistentEmailException : public IncorrectCredentialsException
 {
 public:
 	const char* what() const override

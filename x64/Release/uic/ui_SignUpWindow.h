@@ -34,7 +34,10 @@ public:
     QLabel *logoLabel;
     QSpacerItem *verticalSpacer_4;
     QVBoxLayout *verticalLayout;
-    QVBoxLayout *lineEditLayout;
+    QVBoxLayout *userNameLayout;
+    QVBoxLayout *emailLayout;
+    QVBoxLayout *passwordLayout;
+    QVBoxLayout *confirmPasswordLayout;
     QSpacerItem *verticalSpacer;
     QPushButton *signUpButton;
     QPushButton *logInButton;
@@ -87,11 +90,29 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName("verticalLayout");
-        lineEditLayout = new QVBoxLayout();
-        lineEditLayout->setSpacing(6);
-        lineEditLayout->setObjectName("lineEditLayout");
+        userNameLayout = new QVBoxLayout();
+        userNameLayout->setSpacing(6);
+        userNameLayout->setObjectName("userNameLayout");
 
-        verticalLayout->addLayout(lineEditLayout);
+        verticalLayout->addLayout(userNameLayout);
+
+        emailLayout = new QVBoxLayout();
+        emailLayout->setSpacing(6);
+        emailLayout->setObjectName("emailLayout");
+
+        verticalLayout->addLayout(emailLayout);
+
+        passwordLayout = new QVBoxLayout();
+        passwordLayout->setSpacing(6);
+        passwordLayout->setObjectName("passwordLayout");
+
+        verticalLayout->addLayout(passwordLayout);
+
+        confirmPasswordLayout = new QVBoxLayout();
+        confirmPasswordLayout->setSpacing(6);
+        confirmPasswordLayout->setObjectName("confirmPasswordLayout");
+
+        verticalLayout->addLayout(confirmPasswordLayout);
 
         verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
