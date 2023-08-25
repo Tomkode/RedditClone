@@ -26,3 +26,10 @@ void Validator::arePasswordsEqual(std::string password, std::string confirmPassw
 	if (password != confirmPassword)
 		throw DifferentPasswordsException();
 }
+
+void Validator::isValidResetCode(std::string passwordResetCode)
+{
+	regex pattern("^[1-9]{1}[0-9]{6}$");
+	if (!regex_match(passwordResetCode, pattern))
+		throw InvalidResetCodeException();
+}

@@ -125,6 +125,9 @@
            <layout class="QVBoxLayout" name="confirmPasswordLayout"/>
           </item>
           <item>
+           <layout class="QVBoxLayout" name="passwordResetCodeLayout"/>
+          </item>
+          <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>

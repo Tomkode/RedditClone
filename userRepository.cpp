@@ -12,10 +12,11 @@ void userRepository::addUser(User newUser)
 
     connection->setSchema("Reddit");
     sql::PreparedStatement* prep_stmt;
-    prep_stmt = connection->prepareStatement("INSERT INTO Users (username, password, email) VALUES (?, ?, ?)");
+    prep_stmt = connection->prepareStatement("INSERT INTO Users (username, password, email, resetcode) VALUES (?, ?, ?, ?)");
     prep_stmt->setString(1, newUser.getUsername());
     prep_stmt->setString(2, newUser.getPassword());
     prep_stmt->setString(3, newUser.getEmail());
+    prep_stmt->setString(4, newUser.getResetCode());
     prep_stmt->execute();
     delete prep_stmt;
     closeConnection();
@@ -35,7 +36,8 @@ User userRepository::getUserByUsername(std::string username)
         std::string userName = res->getString("username").asStdString();
         std::string password = res->getString("password").asStdString();
         std::string email = res->getString("email").asStdString();
-        User foundUser(userName, password, email);
+        std::string resetCode = res->getString("resetcode").asStdString();
+        User foundUser(userName, password, email, resetCode);
         delete prep_stmt;
         closeConnection();
         return foundUser;
@@ -62,7 +64,8 @@ User userRepository::getUsersByEmail(std::string email)
         std::string userName = res->getString("username").asStdString();
         std::string password = res->getString("password").asStdString();
         std::string email = res->getString("email").asStdString();
-        User foundUser(userName, password, email);
+        std::string resetCode = res->getString("resetcode").asStdString();
+        User foundUser(userName, password, email, resetCode);
         delete prep_stmt;
         closeConnection();
         return foundUser;

@@ -17,7 +17,7 @@ std::string Service::hashToSHA256(std::string inputString)
 	return string(hash_str);
 }
 
-void Service::createUserAccount(std::string userName, std::string password, std::string confirmPassword, std::string email)
+void Service::createUserAccount(std::string userName, std::string password, std::string confirmPassword, std::string email, std::string passwordResetCode)
 {
 	Validator v;
 	//validations for username, password and email
@@ -27,10 +27,11 @@ void Service::createUserAccount(std::string userName, std::string password, std:
     verifyAccountUniqueness("", email);
 	v.isValidPassword(password);
 	v.arePasswordsEqual(password, confirmPassword);
+	v.isValidResetCode(passwordResetCode);
 	
 	string hashedPassword = this->hashToSHA256(password);
 
-    User newUser(userName, hashedPassword, email);
+    User newUser(userName, hashedPassword, email, passwordResetCode);
 	this->userRepository.addUser(newUser);
 }
 
@@ -80,6 +81,12 @@ void Service::verifyConfirmPassword(std::string password, std::string confirmPas
 {
 	Validator v;
 	v.arePasswordsEqual(password, confirmPassword);
+}
+
+void Service::verifyResetCode(std::string resetCode)
+{
+	Validator v;
+	v.isValidResetCode(resetCode);
 }
 
 

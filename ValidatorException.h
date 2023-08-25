@@ -29,6 +29,13 @@ public:
 		return "Password must contain one uppercase letter,one lowercase letter,one digit, one special character!";
 	}
 };
+class InvalidResetCodeException : public IncorrectCredentialsException
+{
+public:
+	const char* what() const override {
+		return "Reset code must be a 7 digit number!";
+	}
+};
 class DifferentPasswordsException : public IncorrectCredentialsException
 {
 public:

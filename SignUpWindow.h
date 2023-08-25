@@ -17,10 +17,12 @@ private:
 	MyLineEdit* passwordLineEdit;
 	MyLineEdit* confirmPasswordLineEdit;
 	MyLineEdit* emailLineEdit;
+	MyLineEdit* passwordResetCodeLineEdit;
 	QLabel* userNameErrorLabel;
 	QLabel* emailErrorLabel;
 	QLabel* passwordErrorLabel;
 	QLabel* confirmPasswordErrorLabel;
+	QLabel* passwordResetCodeErrorLabel;
 	std::vector<int> windowChanges;
 
 	Service& service;
@@ -35,4 +37,5 @@ private:
 	void userNameChecker();
 	void emailChecker();
 	void confirmPasswordChecker();
+	void resetCodeChecker();
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SignUpWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -38,6 +38,7 @@ public:
     QVBoxLayout *emailLayout;
     QVBoxLayout *passwordLayout;
     QVBoxLayout *confirmPasswordLayout;
+    QVBoxLayout *passwordResetCodeLayout;
     QSpacerItem *verticalSpacer;
     QPushButton *signUpButton;
     QPushButton *logInButton;
@@ -113,6 +114,12 @@ public:
         confirmPasswordLayout->setObjectName("confirmPasswordLayout");
 
         verticalLayout->addLayout(confirmPasswordLayout);
+
+        passwordResetCodeLayout = new QVBoxLayout();
+        passwordResetCodeLayout->setSpacing(6);
+        passwordResetCodeLayout->setObjectName("passwordResetCodeLayout");
+
+        verticalLayout->addLayout(passwordResetCodeLayout);
 
         verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Minimum);
 

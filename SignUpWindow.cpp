@@ -27,26 +27,31 @@ void SignUpWindow::initSignUpWindow()
 	confirmPasswordLineEdit = new MyLineEdit();
 	emailLineEdit = new MyLineEdit();
 	userNameLineEdit = new MyLineEdit();
+	passwordResetCodeLineEdit = new MyLineEdit();
 	passwordLineEdit->setEchoMode(QLineEdit::Password);
 	confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
 	userNameLineEdit->setPlaceholderText("Username");
 	passwordLineEdit->setPlaceholderText("Password");
+	passwordResetCodeLineEdit->setPlaceholderText("Reset Password Code");
 	emailLineEdit->setPlaceholderText("Email");
 	confirmPasswordLineEdit->setPlaceholderText("Confirm Password");
 	userNameLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
 	passwordLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
 	confirmPasswordLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
 	emailLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
+	passwordResetCodeLineEdit->setStyleSheet("QLineEdit{border: 1px solid #808080;border-radius: 13px;}");
 
 	QSize lineEditSize(100, 30);
 	passwordLineEdit->setMinimumSize(lineEditSize);
 	userNameLineEdit->setMinimumSize(lineEditSize);
 	emailLineEdit->setMinimumSize(lineEditSize);
 	confirmPasswordLineEdit->setMinimumSize(lineEditSize);
+	passwordResetCodeLineEdit->setMinimumSize(lineEditSize);
 	this->ui.userNameLayout->addWidget(userNameLineEdit);
 	this->ui.emailLayout->addWidget(emailLineEdit);
 	this->ui.passwordLayout->addWidget(passwordLineEdit);
 	this->ui.confirmPasswordLayout->addWidget(confirmPasswordLineEdit);
+	this->ui.passwordResetCodeLayout->addWidget(passwordResetCodeLineEdit);
 	passwordLineEdit->setEchoMode(QLineEdit::Password);
 	confirmPasswordLineEdit->setEchoMode(QLineEdit::Password);
 
@@ -55,8 +60,10 @@ void SignUpWindow::initSignUpWindow()
 	passwordErrorLabel = nullptr;
 	emailErrorLabel = nullptr;
 	confirmPasswordErrorLabel = nullptr;
+	passwordResetCodeErrorLabel = nullptr;
 
 
+	windowChanges.push_back(0);
 	windowChanges.push_back(0);
 	windowChanges.push_back(0);
 	windowChanges.push_back(0);
@@ -65,96 +72,32 @@ void SignUpWindow::initSignUpWindow()
 
 void SignUpWindow::signUpUser()
 {
-	// **************************************************************************************
-	// This function should be redone to call functions like passwordChecker from this window
-	//
-	if (userNameErrorLabel != nullptr) {
-		delete userNameErrorLabel;
-		userNameErrorLabel = nullptr;
-	}
-	if (passwordErrorLabel != nullptr) {
-			delete passwordErrorLabel;
-			passwordErrorLabel = nullptr;
-		}
-	if (emailErrorLabel != nullptr) {
-			delete emailErrorLabel;
-			emailErrorLabel = nullptr;
-		}
-	if (confirmPasswordErrorLabel != nullptr) {
-			delete confirmPasswordErrorLabel;
-			confirmPasswordErrorLabel = nullptr;
-		}
-	
-	/*this->emailErrorLabel->setText("");
-	this->passwordErrorLabel->setText("");
-	this->confirmPasswordErrorLabel->setText("");*/
+
+	//checks if there exists any errorlabels or any lineEdits with empty contents,in which case it won't do anything
+	if (userNameErrorLabel == nullptr && passwordErrorLabel == nullptr && confirmPasswordErrorLabel == nullptr && emailErrorLabel == nullptr && passwordResetCodeErrorLabel == nullptr)
+	{
 	string userName = this->userNameLineEdit->text().toLocal8Bit().constData();
 	string password = this->passwordLineEdit->text().toLocal8Bit().constData();
 	string email = this->emailLineEdit->text().toLocal8Bit().constData();
 	string confirmPassword = this->confirmPasswordLineEdit->text().toLocal8Bit().constData();
-	try {
-		service.createUserAccount(userName, password, confirmPassword, email);
+	string passwordResetCode = this->passwordResetCodeLineEdit->text().toLocal8Bit().constData();
+		if (userName != "" && password != "" && email != "" && confirmPassword != "" && passwordResetCode != "")
+		{
+			service.createUserAccount(userName, password, confirmPassword, email, passwordResetCode);
+			this->switchWindows();
 
-		//clear line edits
+		}
+		else {
+			userNameChecker();
+			emailChecker();
+			passwordChecker();
+			confirmPasswordChecker();
+			resetCodeChecker();
+		}
 
-		this->switchWindows();
-	}
-	catch (InvalidUsernameException& err) {
-		userNameErrorLabel = new QLabel;
-		userNameErrorLabel->setWordWrap(1);
-		this->userNameErrorLabel->setText(err.what());
-		this->ui.userNameLayout->insertWidget(1, userNameErrorLabel);
-		QSize size = this->userNameErrorLabel->size();
-		this->setFixedHeight(size.height());
-	}
-	catch (ExistentUsernameException& err)
-	{
-		userNameErrorLabel = new QLabel;
-		userNameErrorLabel->setWordWrap(1);
-		this->userNameErrorLabel->setText(err.what());
-		this->ui.userNameLayout->insertWidget(1, userNameErrorLabel);
-		QSize size = this->userNameErrorLabel->size();
-		this->setFixedHeight(size.height());
-	}
-	catch (InvalidEmailException& err) {
-		emailErrorLabel = new QLabel;
-		emailErrorLabel->setWordWrap(1);
-		this->emailErrorLabel->setText(err.what());
-		this->ui.emailLayout->insertWidget(1, emailErrorLabel);
-		QSize size = this->emailErrorLabel->size();
-		this->setFixedHeight(size.height());
-	}
-	catch (ExistentEmailException& err)
-	{
-		emailErrorLabel = new QLabel;
-		emailErrorLabel->setWordWrap(1);
-		this->emailErrorLabel->setText(err.what());
-		this->ui.emailLayout->insertWidget(1, emailErrorLabel);
-		QSize size = this->emailErrorLabel->size();
-		this->setFixedHeight(size.height());
-	}
-	catch (InvalidPasswordException& err) {
-		passwordErrorLabel = new QLabel;
-		passwordErrorLabel->setWordWrap(1);
-		this->passwordErrorLabel->setText(err.what());
-		this->ui.passwordLayout->insertWidget(1, passwordErrorLabel);
-		QSize size = this->passwordErrorLabel->size();
-		this->setFixedHeight(size.height());
 	}
 	
-	catch (DifferentPasswordsException& err) {
-		confirmPasswordErrorLabel = new QLabel;
-		confirmPasswordErrorLabel->setWordWrap(1);
-		this->confirmPasswordErrorLabel->setText(err.what());
-		this->ui.confirmPasswordLayout->insertWidget(1, confirmPasswordErrorLabel);
-		QSize size = this->passwordErrorLabel->size();
-		this->setFixedHeight(size.height());
-	}	
-	catch (exception& err)
-	{
-		/*this->.generalErrorLabel->setText("Unknown Error");*/
-		;
-	}
+	
 	//after creating the account,close this window and redirect the user to the login window
 
 }
@@ -168,6 +111,7 @@ void SignUpWindow::connectSignalsAndSlots()
 	connect(this->userNameLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
 	connect(this->confirmPasswordLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
 	connect(this->emailLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
+	connect(this->passwordResetCodeLineEdit, &MyLineEdit::focussed, this, &SignUpWindow::lineEditClicked);
 	
 	connect(this->userNameLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::userNameChecker);
 	connect(this->emailLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::emailChecker);
@@ -175,6 +119,7 @@ void SignUpWindow::connectSignalsAndSlots()
 	connect(this->passwordLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::confirmPasswordChecker);
 	connect(this->confirmPasswordLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::confirmPasswordChecker);
 	connect(this->confirmPasswordLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::passwordChecker);
+	connect(this->passwordResetCodeLineEdit, &MyLineEdit::textChanged, this, &SignUpWindow::resetCodeChecker);
 
 }
 
@@ -184,6 +129,37 @@ void SignUpWindow::switchWindows()
 	this->passwordLineEdit->clear();
 	this->emailLineEdit->clear();
 	this->confirmPasswordLineEdit->clear();
+	this->passwordResetCodeLineEdit->clear();
+	if (userNameErrorLabel != nullptr) {
+		delete userNameErrorLabel;
+		userNameErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[0]);
+		windowChanges[0] = 0;
+	}
+	if (passwordErrorLabel != nullptr) {
+		delete passwordErrorLabel;
+		passwordErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[2]);
+		windowChanges[2] = 0;
+	}
+	if (emailErrorLabel != nullptr) {
+		delete emailErrorLabel;
+		emailErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[1]);
+		windowChanges[1] = 0;
+	}
+	if (confirmPasswordErrorLabel != nullptr) {
+		delete confirmPasswordErrorLabel;
+		confirmPasswordErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[3]);
+		windowChanges[3] = 0;
+	}
+	if (passwordResetCodeErrorLabel != nullptr) {
+		delete passwordResetCodeErrorLabel;
+		passwordResetCodeErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[4]);
+		windowChanges[4] = 0;
+	}
 	this->logInWindow->show();
 	this->hide();
 }
@@ -324,6 +300,37 @@ void SignUpWindow::confirmPasswordChecker()
 			QSize size = this->confirmPasswordErrorLabel->sizeHint();
 			this->setFixedHeight(size.height() + this->size().height());
 			windowChanges[3] = size.height();
+		}
+	}
+	catch (exception& err)
+	{
+		;
+	}
+}
+
+void SignUpWindow::resetCodeChecker()
+{
+	if (passwordResetCodeErrorLabel != nullptr) {
+		delete passwordResetCodeErrorLabel;
+		passwordResetCodeErrorLabel = nullptr;
+	}
+	string resetCode = this->passwordResetCodeLineEdit->text().toStdString();
+
+	try {
+		service.verifyResetCode(resetCode);
+		this->setFixedHeight(this->size().height() - windowChanges[4]);
+		windowChanges[4] = 0;
+	}
+	catch (IncorrectCredentialsException& err) {
+		passwordResetCodeErrorLabel = new QLabel;
+		passwordResetCodeErrorLabel->setWordWrap(1);
+		this->passwordResetCodeErrorLabel->setText(err.what());
+		this->passwordResetCodeErrorLabel->setStyleSheet("color:#ff3333");
+		this->ui.passwordResetCodeLayout->insertWidget(1, passwordResetCodeErrorLabel);
+		if (windowChanges[4] == 0) {
+			QSize size = this->passwordResetCodeErrorLabel->sizeHint();
+			this->setFixedHeight(size.height() + this->size().height());
+			windowChanges[4] = size.height();
 		}
 	}
 	catch (exception& err)
