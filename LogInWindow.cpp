@@ -43,6 +43,10 @@ void LogInWindow::initLogInWindow()
 	this->ui.lineEditLayout->addWidget(userNameLineEdit);
 	this->ui.lineEditLayout->addWidget(passwordLineEdit);
 	errorLabel = nullptr;
+
+	ui.forgotPasswordLabel->setCursor(QCursor(Qt::PointingHandCursor));
+	ui.logInButton->setCursor(QCursor(Qt::PointingHandCursor));
+	ui.signUpButton->setCursor(QCursor(Qt::PointingHandCursor));
 	connectSignalsAndSlots();
 
 }

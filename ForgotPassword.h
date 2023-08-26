@@ -4,7 +4,7 @@
 #include "ui_ForgotPassword.h"
 #include "MyLineEdit.h"
 #include "Service.h"
-
+#include <QCloseEvent>
 class ForgotPassword : public QWidget
 {
 	Q_OBJECT
@@ -22,6 +22,8 @@ private:
 	void userNameChecker();
 	void resetCodeChecker();
 	void emailChecker();
+	void closeWindow();
+	void closeEvent(QCloseEvent* event) override;
 
 	Service& service;
 	std::vector<int> windowChanges;
@@ -35,4 +37,7 @@ private:
 	QLabel* passwordErrorLabel;
 	QLabel* resetCodeErrorLabel;
 	QLabel* emailErrorLabel;
+	QLabel* incorrectErrorLabel;
+signals:
+	void closing();
 };

@@ -62,6 +62,8 @@ void SignUpWindow::initSignUpWindow()
 	confirmPasswordErrorLabel = nullptr;
 	passwordResetCodeErrorLabel = nullptr;
 
+	ui.signUpButton->setCursor(QCursor(Qt::PointingHandCursor));
+	ui.logInButton->setCursor(QCursor(Qt::PointingHandCursor));
 
 	windowChanges.push_back(0);
 	windowChanges.push_back(0);

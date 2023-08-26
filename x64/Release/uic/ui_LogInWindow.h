@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'LogInWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -106,6 +106,12 @@ public:
 
         forgotPasswordLabel = new ClickableLabel(centralWidget);
         forgotPasswordLabel->setObjectName("forgotPasswordLabel");
+        forgotPasswordLabel->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"color: rgb(85, 0, 255);\n"
+"font-style: italic;\n"
+"text-decoration: underline;\n"
+"cursor: pointer;\n"
+"}"));
         forgotPasswordLabel->setOpenExternalLinks(false);
 
         verticalLayout->addWidget(forgotPasswordLabel);

@@ -46,6 +46,9 @@ void ForgotPassword::initWindow()
 	passwordErrorLabel = nullptr;
 	emailErrorLabel = nullptr;
 	resetCodeErrorLabel = nullptr;
+	incorrectErrorLabel = nullptr;
+
+	ui.resetPassButton->setCursor(QCursor(Qt::PointingHandCursor));
 
 	windowChanges.push_back(0);
 	windowChanges.push_back(0);
@@ -57,10 +60,47 @@ void ForgotPassword::initWindow()
 void ForgotPassword::connectSignalsAndSlots()
 {
 	connect(this->ui.resetPassButton, &QPushButton::clicked, this, &ForgotPassword::resetPassword);
-	connect(this->userNameLineEdit, &MyLineEdit::textChanged, this, &ForgotPassword::userNameChecker);
-	connect(this->emailLineEdit, &MyLineEdit::textChanged, this, &ForgotPassword::emailChecker);
-	connect(this->passwordLineEdit, &MyLineEdit::textChanged, this, &ForgotPassword::passwordChecker);
-	connect(this->resetCodeLineEdit, &MyLineEdit::textChanged, this, &ForgotPassword::resetCodeChecker);
+	connect(this->userNameLineEdit, &MyLineEdit::textChanged, this, [this] {
+		userNameChecker();
+		if (incorrectErrorLabel != nullptr)
+		{
+			delete incorrectErrorLabel;
+			incorrectErrorLabel = nullptr;
+			this->setFixedHeight(this->size().height() - windowChanges[4]);
+			windowChanges[4] = 0;
+		}
+		});
+	connect(this->passwordLineEdit, &MyLineEdit::textChanged, this, [this] {
+		passwordChecker();
+		if (incorrectErrorLabel != nullptr)
+		{
+			delete incorrectErrorLabel;
+			incorrectErrorLabel = nullptr;
+			this->setFixedHeight(this->size().height() - windowChanges[4]);
+			windowChanges[4] = 0;
+		}
+		});
+	connect(this->emailLineEdit, &MyLineEdit::textChanged, this, [this] {
+		emailChecker();
+		if (incorrectErrorLabel != nullptr)
+		{
+			delete incorrectErrorLabel;
+			incorrectErrorLabel = nullptr;
+			this->setFixedHeight(this->size().height() - windowChanges[4]);
+			windowChanges[4] = 0;
+		}
+		});
+	connect(this->resetCodeLineEdit, &MyLineEdit::textChanged, this, [this] {
+		resetCodeChecker();
+		if (incorrectErrorLabel != nullptr)
+		{
+			delete incorrectErrorLabel;
+			incorrectErrorLabel = nullptr;
+			this->setFixedHeight(this->size().height() - windowChanges[4]);
+			windowChanges[4] = 0;
+		}
+		});
+	connect(this, &ForgotPassword::closing, this, &ForgotPassword::closeWindow);
 }
 
 void ForgotPassword::resetPassword()
@@ -75,20 +115,20 @@ void ForgotPassword::resetPassword()
 		{
 			try {
 				service.resetUserPassword(userName, email, passwordResetCode, password);
-				this->hide();
+				closeWindow();
 			}
 			catch (IncorrectCredentialsException& err)
 			{
-				passwordErrorLabel = new QLabel;
-				passwordErrorLabel->setWordWrap(1);
-				passwordErrorLabel->setText(err.what());
-				passwordErrorLabel->setStyleSheet("color:#ff3333");
-				passwordErrorLabel->setMaximumHeight(20);
-				this->ui.newPassLayout->insertWidget(1, passwordErrorLabel);
-				if (windowChanges[3] == 0) {
-					QSize size = this->passwordErrorLabel->sizeHint();
+				incorrectErrorLabel = new QLabel;
+				incorrectErrorLabel->setWordWrap(1);
+				incorrectErrorLabel->setText(err.what());
+				incorrectErrorLabel->setStyleSheet("color:#ff3333");
+				incorrectErrorLabel->setMaximumHeight(20);
+				this->ui.layout->insertWidget(6, incorrectErrorLabel);
+				if (windowChanges[4] == 0) {
+					QSize size = this->incorrectErrorLabel->sizeHint();
 					this->setFixedHeight(size.height() + this->size().height());
-					windowChanges[3] = size.height();
+					windowChanges[4] = size.height();
 				}
 			}
 		}
@@ -238,4 +278,43 @@ void ForgotPassword::emailChecker()
 	{
 		;
 	}
+}
+
+void ForgotPassword::closeWindow()
+{
+	this->userNameLineEdit->clear();
+	this->passwordLineEdit->clear();
+	this->emailLineEdit->clear();
+	this->resetCodeLineEdit->clear();
+	if (userNameErrorLabel != nullptr) {
+		delete userNameErrorLabel;
+		userNameErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[0]);
+		windowChanges[0] = 0;
+	}
+	if (passwordErrorLabel != nullptr) {
+		delete passwordErrorLabel;
+		passwordErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[2]);
+		windowChanges[2] = 0;
+	}
+	if (emailErrorLabel != nullptr) {
+		delete emailErrorLabel;
+		emailErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[1]);
+		windowChanges[1] = 0;
+	}
+	if (resetCodeErrorLabel != nullptr) {
+		delete resetCodeErrorLabel;
+		resetCodeErrorLabel = nullptr;
+		this->setFixedHeight(this->size().height() - windowChanges[3]);
+		windowChanges[3] = 0;
+	}
+	this->hide();
+}
+
+void ForgotPassword::closeEvent(QCloseEvent* event)
+{
+	emit closing();
+	event->accept();
 }

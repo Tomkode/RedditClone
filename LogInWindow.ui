@@ -127,6 +127,14 @@
           </item>
           <item>
            <widget class="ClickableLabel" name="forgotPasswordLabel">
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+color: rgb(85, 0, 255);
+font-style: italic;
+text-decoration: underline;
+cursor: pointer;
+}</string>
+            </property>
             <property name="text">
              <string>Forgor password?</string>
             </property>
