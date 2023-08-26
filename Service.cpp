@@ -21,18 +21,29 @@ void Service::createUserAccount(std::string userName, std::string password, std:
 {
 	Validator v;
 	//validations for username, password and email
-	v.isValidUsername(userName);
-    verifyAccountUniqueness(userName);
-	v.isValidEmail(email);
-    verifyAccountUniqueness("", email);
-	v.isValidPassword(password);
-	v.arePasswordsEqual(password, confirmPassword);
-	v.isValidResetCode(passwordResetCode);
+	verifyUsername(userName);
+	verifyEmail(email);
+	verifyPassword(password);
+	verifyConfirmPassword(password, confirmPassword);
+	verifyResetCode(passwordResetCode);
 	
 	string hashedPassword = this->hashToSHA256(password);
 
     User newUser(userName, hashedPassword, email, passwordResetCode);
 	this->userRepository.addUser(newUser);
+}
+
+void Service::resetUserPassword(std::string userName, std::string email, std::string resetCode, std::string newPassword)
+{
+	User userToChange = this->userRepository.getUserByUsername(userName);
+	if (userToChange.getEmail() == email && userToChange.getResetCode() == resetCode)
+	{
+		verifyPassword(newPassword);
+		newPassword = hashToSHA256(newPassword);
+		userRepository.changePassword(userName, newPassword);
+	}
+	else
+		throw InexistentAcccountException();
 }
 
 
@@ -49,10 +60,27 @@ void Service::verifyAccountCredentials(std::string userName, std::string hashedP
 
 void Service::verifyAccountUniqueness(std::string userName, std::string email)
 {
-	if (userName != ""&& userRepository.getUserByUsername(userName).getUsername() != "")
-		throw ExistentUsernameException();
-	else if (userRepository.getUsersByEmail(email).getEmail() != "")
-		throw ExistentEmailException();
+	if (userName != "") {
+		try
+		{
+			userRepository.getUserByUsername(userName);
+		}
+		catch (InexistentAcccountException &err)
+		{
+			throw ExistentUsernameException();
+		}
+	}
+	else
+	{
+		try
+		{
+			userRepository.getUsersByEmail(email);
+		}
+		catch (InexistentAcccountException &err)
+		{
+			throw ExistentEmailException();
+		}
+	}
 }
 
 void Service::verifyUsername(std::string userName)

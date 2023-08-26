@@ -10,6 +10,7 @@ private:
 public:
 	std::string hashToSHA256(std::string input_string);
 	void createUserAccount(std::string userName, std::string password, std::string confirmPassword, std::string email, std::string passwordResetCode);
+	void resetUserPassword(std::string userName, std::string email, std::string resetCode, std::string newPassword);
 	void verifyAccountCredentials(std::string userName, std::string hashedPass);
 	void verifyAccountUniqueness(std::string userName, std::string email="");
 	void verifyUsername(std::string userName);

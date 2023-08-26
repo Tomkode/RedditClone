@@ -85,7 +85,6 @@ void SignUpWindow::signUpUser()
 		{
 			service.createUserAccount(userName, password, confirmPassword, email, passwordResetCode);
 			this->switchWindows();
-
 		}
 		else {
 			userNameChecker();

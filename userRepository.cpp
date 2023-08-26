@@ -46,7 +46,7 @@ User userRepository::getUserByUsername(std::string username)
     {
         delete prep_stmt;
         closeConnection();
-        return User();
+        throw InexistentAcccountException();
     }
 }
 
@@ -74,7 +74,7 @@ User userRepository::getUsersByEmail(std::string email)
     {
         delete prep_stmt;
         closeConnection();
-        return User();
+        throw InexistentAcccountException();
     }
 }
 
@@ -123,4 +123,18 @@ bool userRepository::isUserByEmail(std::string email)
         closeConnection();
         return false;
     }
+}
+
+void userRepository::changePassword(std::string userName, std::string newPassword)
+{
+    makeConnection();
+    connection->setSchema("Reddit");
+    sql::PreparedStatement* prep_stmt;
+    prep_stmt = connection->prepareStatement("UPDATE Users SET password = ? WHERE username = ?");
+
+    prep_stmt->setString(1, newPassword);
+    prep_stmt->setString(2, userName);
+    prep_stmt->executeQuery();
+    delete prep_stmt;
+    closeConnection();
 }
