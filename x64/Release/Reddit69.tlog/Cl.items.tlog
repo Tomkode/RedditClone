@@ -1,5 +1,6 @@
 D:\C++ Projects\Reddit\ClickableLabel.cpp;D:\C++ Projects\Reddit\x64\Release\ClickableLabel.obj
 D:\C++ Projects\Reddit\ForgotPassword.cpp;D:\C++ Projects\Reddit\x64\Release\ForgotPassword.obj
+D:\C++ Projects\Reddit\MainWindow.cpp;D:\C++ Projects\Reddit\x64\Release\MainWindow.obj
 D:\C++ Projects\Reddit\MyLineEdit.cpp;D:\C++ Projects\Reddit\x64\Release\MyLineEdit.obj
 D:\C++ Projects\Reddit\Service.cpp;D:\C++ Projects\Reddit\x64\Release\Service.obj
 D:\C++ Projects\Reddit\SignUpWindow.cpp;D:\C++ Projects\Reddit\x64\Release\SignUpWindow.obj
@@ -17,3 +18,4 @@ D:\C++ Projects\Reddit\x64\Release\moc\moc_SignUpWindow.cpp;D:\C++ Projects\Redd
 D:\C++ Projects\Reddit\x64\Release\moc\moc_MyLineEdit.cpp;D:\C++ Projects\Reddit\x64\Release\moc_MyLineEdit.obj
 D:\C++ Projects\Reddit\x64\Release\moc\moc_ClickableLabel.cpp;D:\C++ Projects\Reddit\x64\Release\moc_ClickableLabel.obj
 D:\C++ Projects\Reddit\x64\Release\moc\moc_ForgotPassword.cpp;D:\C++ Projects\Reddit\x64\Release\moc_ForgotPassword.obj
+D:\C++ Projects\Reddit\x64\Release\moc\moc_MainWindow.cpp;D:\C++ Projects\Reddit\x64\Release\moc_MainWindow.obj

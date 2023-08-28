@@ -9,6 +9,7 @@ class Reddit69 : public QWidget
 
 public:
     Reddit69(QWidget *parent = nullptr);
+    void initWindow();
     ~Reddit69();
 
 private:

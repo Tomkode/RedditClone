@@ -2,6 +2,7 @@
 #include <QtWidgets/QApplication>
 #include "LogInWindow.h"
 #include "SignUpWindow.h"
+#include "MainWindow.h"
 
 int app(int argc, char *argv[])
 {
@@ -10,10 +11,12 @@ int app(int argc, char *argv[])
     LogInWindow* login = new LogInWindow(service);
     SignUpWindow* signup = new SignUpWindow(service);
     ForgotPassword* forgor = new ForgotPassword(service);
+    Reddit69* mainWin = new Reddit69();
     login->setChild(signup);
     login->setForgotPasswordWindow(forgor);
     signup->setParent(login);
     login->show();
+    mainWin->show();
     return a.exec();
 }
 
