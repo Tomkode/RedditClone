@@ -27,11 +27,11 @@ QT_BEGIN_NAMESPACE
 class Ui_Reddit69Class
 {
 public:
-    QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
     QWidget *widget;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QSpacerItem *horizontalSpacer;
     QLabel *label;
@@ -39,8 +39,10 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QComboBox *comboBox;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_4;
     QScrollArea *postArea;
     QWidget *scrollAreaWidgetContents;
+    QSpacerItem *horizontalSpacer_3;
     QScrollBar *verticalScrollBar;
     QListWidget *listWidget;
 
@@ -48,24 +50,22 @@ public:
     {
         if (Reddit69Class->objectName().isEmpty())
             Reddit69Class->setObjectName("Reddit69Class");
-        Reddit69Class->resize(1124, 648);
+        Reddit69Class->resize(1063, 648);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(100);
         sizePolicy.setVerticalStretch(100);
         sizePolicy.setHeightForWidth(Reddit69Class->sizePolicy().hasHeightForWidth());
         Reddit69Class->setSizePolicy(sizePolicy);
         Reddit69Class->setStyleSheet(QString::fromUtf8("\n"
-"background-color: rgb(255, 255, 255)\n"
+"background-color: #dae0e6\n"
 ""));
-        verticalLayout_2 = new QVBoxLayout(Reddit69Class);
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(0);
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalLayout_2->setSizeConstraint(QLayout::SetNoConstraint);
-        horizontalLayout_2->setContentsMargins(0, -1, -1, -1);
+        horizontalLayout_4 = new QHBoxLayout(Reddit69Class);
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName("verticalLayout");
@@ -78,10 +78,10 @@ public:
         widget->setSizePolicy(sizePolicy1);
         widget->setMinimumSize(QSize(0, 50));
         widget->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
-        horizontalLayout_3 = new QHBoxLayout(widget);
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
         label_2 = new QLabel(widget);
         label_2->setObjectName("label_2");
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -94,32 +94,32 @@ public:
         label_2->setPixmap(QPixmap(QString::fromUtf8("images/Reddit Logo For Bar.png")));
         label_2->setScaledContents(false);
 
-        horizontalLayout_3->addWidget(label_2);
+        horizontalLayout_2->addWidget(label_2);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(37, 17, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer);
+        horizontalLayout_2->addItem(horizontalSpacer);
 
         label = new QLabel(widget);
         label->setObjectName("label");
 
-        horizontalLayout_3->addWidget(label);
+        horizontalLayout_2->addWidget(label);
 
         searchBarLineEdit = new QLineEdit(widget);
         searchBarLineEdit->setObjectName("searchBarLineEdit");
         searchBarLineEdit->setMinimumSize(QSize(0, 32));
         searchBarLineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {background-color:#f6f7f8;color: black; border: none;border-radius: 13px;font-size: 12px;font-weight: bold;}"));
 
-        horizontalLayout_3->addWidget(searchBarLineEdit);
+        horizontalLayout_2->addWidget(searchBarLineEdit);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(37, 17, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_2);
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
         comboBox = new QComboBox(widget);
         comboBox->setObjectName("comboBox");
 
-        horizontalLayout_3->addWidget(comboBox);
+        horizontalLayout_2->addWidget(comboBox);
 
 
         verticalLayout->addWidget(widget);
@@ -127,15 +127,23 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName("horizontalLayout");
+        horizontalSpacer_4 = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
         postArea = new QScrollArea(Reddit69Class);
         postArea->setObjectName("postArea");
         postArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 819, 558));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 540, 558));
         postArea->setWidget(scrollAreaWidgetContents);
 
         horizontalLayout->addWidget(postArea);
+
+        horizontalSpacer_3 = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
 
         verticalScrollBar = new QScrollBar(Reddit69Class);
         verticalScrollBar->setObjectName("verticalScrollBar");
@@ -147,7 +155,7 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
 
-        horizontalLayout_2->addLayout(verticalLayout);
+        horizontalLayout_3->addLayout(verticalLayout);
 
         listWidget = new QListWidget(Reddit69Class);
         listWidget->setObjectName("listWidget");
@@ -158,10 +166,10 @@ public:
         listWidget->setSizePolicy(sizePolicy3);
         listWidget->setMinimumSize(QSize(100, 0));
 
-        horizontalLayout_2->addWidget(listWidget);
+        horizontalLayout_3->addWidget(listWidget);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        horizontalLayout_4->addLayout(horizontalLayout_3);
 
 
         retranslateUi(Reddit69Class);
