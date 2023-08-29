@@ -1,0 +1,43 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.35.32215.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///d:/redditclone-main/x64/release/moc/moc_mylineedit.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "f2f992f329692d90c8bee0bfca892465c689720253f47150674113a823408327"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/redditclone-main/mylineedit.h"
+          },
+          "hashes": {
+            "sha-256": "f16e363b3704f5b7d5c6513b892837c3e2b7bf6720060442a9c5e7c484fce3c0"
+          }
+        }
+      ]
+    }
+  ]
+}

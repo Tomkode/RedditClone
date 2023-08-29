@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_Reddit69.h"
+#include <vector>
 
 class Reddit69 : public QWidget
 {
@@ -14,4 +15,6 @@ public:
 
 private:
     Ui::Reddit69Class ui;
+    std::vector<QWidget*> widgets;
+    void createPostWidget();
 };

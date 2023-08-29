@@ -2,7 +2,6 @@
 #include <QtWidgets/QApplication>
 #include "LogInWindow.h"
 #include "SignUpWindow.h"
-#include "MainWindow.h"
 
 int app(int argc, char *argv[])
 {

@@ -19,3 +19,7 @@ void Reddit69::initWindow()
 
 Reddit69::~Reddit69()
 {}
+
+void Reddit69::createPostWidget()
+{
+}

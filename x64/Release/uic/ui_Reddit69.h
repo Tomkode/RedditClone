@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Reddit69.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.0
+** Created by: Qt User Interface Compiler version 6.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -133,6 +133,7 @@ public:
 
         postArea = new QScrollArea(Reddit69Class);
         postArea->setObjectName("postArea");
+        postArea->setStyleSheet(QString::fromUtf8("border: 1px solid;"));
         postArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");

@@ -159,6 +159,9 @@ background-color: #dae0e6
          </item>
          <item>
           <widget class="QScrollArea" name="postArea">
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid;</string>
+           </property>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
