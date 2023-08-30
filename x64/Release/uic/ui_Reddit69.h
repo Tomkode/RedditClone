@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Reddit69.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.0
+** Created by: Qt User Interface Compiler version 6.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -42,6 +42,8 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QScrollArea *postArea;
     QWidget *scrollAreaWidgetContents;
+    QHBoxLayout *horizontalLayout_5;
+    QWidget *postAreaWidget;
     QSpacerItem *horizontalSpacer_3;
     QScrollBar *verticalScrollBar;
     QListWidget *listWidget;
@@ -133,11 +135,20 @@ public:
 
         postArea = new QScrollArea(Reddit69Class);
         postArea->setObjectName("postArea");
-        postArea->setStyleSheet(QString::fromUtf8("border: 1px solid;"));
+        postArea->setStyleSheet(QString::fromUtf8(""));
         postArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 540, 558));
+        horizontalLayout_5 = new QHBoxLayout(scrollAreaWidgetContents);
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        postAreaWidget = new QWidget(scrollAreaWidgetContents);
+        postAreaWidget->setObjectName("postAreaWidget");
+
+        horizontalLayout_5->addWidget(postAreaWidget);
+
         postArea->setWidget(scrollAreaWidgetContents);
 
         horizontalLayout->addWidget(postArea);

@@ -1,2 +1,2 @@
-﻿  SignUpWindow.cpp
-  Reddit69.vcxproj -> D:\C++ Projects\Reddit Clone\x64\Debug\Reddit69.exe
+﻿C:\Users\thoma\AppData\Local\QtMsBuild\qt_vars.targets(68,5): error : There's no Qt version assigned to project Reddit69.vcxproj for configuration Debug/x64.
+C:\Users\thoma\AppData\Local\QtMsBuild\qt_vars.targets(68,5): error : Please set a Qt installation in 'Project|Properties|Configuration Properties|Qt Project Settings|Qt Installation'.

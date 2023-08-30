@@ -2,3 +2,4 @@ D:\RedditClone-main\x64\Release\Reddit69.exe
 D:\C++ Projects\Reddit Clone\x64\Release\Reddit69.exe
 D:\C++ Projects\Reddit\x64\Release\Reddit69.exe
 D:\C++ Projects\Reddit1\x64\Release\Reddit69.exe
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\Reddit69.exe

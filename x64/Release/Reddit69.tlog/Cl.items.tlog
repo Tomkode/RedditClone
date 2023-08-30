@@ -1,21 +1,22 @@
-D:\C++ Projects\Reddit\ClickableLabel.cpp;D:\C++ Projects\Reddit\x64\Release\ClickableLabel.obj
-D:\C++ Projects\Reddit\ForgotPassword.cpp;D:\C++ Projects\Reddit\x64\Release\ForgotPassword.obj
-D:\C++ Projects\Reddit\MainWindow.cpp;D:\C++ Projects\Reddit\x64\Release\MainWindow.obj
-D:\C++ Projects\Reddit\MyLineEdit.cpp;D:\C++ Projects\Reddit\x64\Release\MyLineEdit.obj
-D:\C++ Projects\Reddit\Service.cpp;D:\C++ Projects\Reddit\x64\Release\Service.obj
-D:\C++ Projects\Reddit\SignUpWindow.cpp;D:\C++ Projects\Reddit\x64\Release\SignUpWindow.obj
-D:\C++ Projects\Reddit\User.cpp;D:\C++ Projects\Reddit\x64\Release\User.obj
-D:\C++ Projects\Reddit\userRepository.cpp;D:\C++ Projects\Reddit\x64\Release\userRepository.obj
-D:\C++ Projects\Reddit\Validator.cpp;D:\C++ Projects\Reddit\x64\Release\Validator.obj
-D:\C++ Projects\Reddit\ValidatorException.cpp;D:\C++ Projects\Reddit\x64\Release\ValidatorException.obj
-D:\C++ Projects\Reddit\LogInWindow.cpp;D:\C++ Projects\Reddit\x64\Release\LogInWindow.obj
-D:\C++ Projects\Reddit\Reddit69.cpp;D:\C++ Projects\Reddit\x64\Release\Reddit69.obj
-D:\C++ Projects\Reddit\main.cpp;D:\C++ Projects\Reddit\x64\Release\main.obj
-D:\C++ Projects\Reddit\x64\Release\rcc\qrc_Reddit69.cpp;D:\C++ Projects\Reddit\x64\Release\qrc_Reddit69.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_Reddit69.cpp;D:\C++ Projects\Reddit\x64\Release\moc_Reddit69.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_LogInWindow.cpp;D:\C++ Projects\Reddit\x64\Release\moc_LogInWindow.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_SignUpWindow.cpp;D:\C++ Projects\Reddit\x64\Release\moc_SignUpWindow.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_MyLineEdit.cpp;D:\C++ Projects\Reddit\x64\Release\moc_MyLineEdit.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_ClickableLabel.cpp;D:\C++ Projects\Reddit\x64\Release\moc_ClickableLabel.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_ForgotPassword.cpp;D:\C++ Projects\Reddit\x64\Release\moc_ForgotPassword.obj
-D:\C++ Projects\Reddit\x64\Release\moc\moc_MainWindow.cpp;D:\C++ Projects\Reddit\x64\Release\moc_MainWindow.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\ClickableLabel.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\ClickableLabel.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\Comment.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\Comment.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\ForgotPassword.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\ForgotPassword.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\MyLineEdit.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\MyLineEdit.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\Post.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\Post.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\PostTemplateWidget.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\PostTemplateWidget.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\Service.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\Service.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\SignUpWindow.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\SignUpWindow.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\User.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\User.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\userRepository.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\userRepository.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\Validator.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\Validator.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\ValidatorException.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\ValidatorException.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\LogInWindow.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\LogInWindow.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\Reddit69.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\Reddit69.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\main.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\main.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\rcc\qrc_Reddit69.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\qrc_Reddit69.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc\moc_Reddit69.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc_Reddit69.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc\moc_LogInWindow.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc_LogInWindow.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc\moc_SignUpWindow.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc_SignUpWindow.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc\moc_MyLineEdit.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc_MyLineEdit.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc\moc_ClickableLabel.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc_ClickableLabel.obj
+C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc\moc_ForgotPassword.cpp;C:\Users\thoma\source\repos\Tomkode\RedditClonee\RedditClone\x64\Release\moc_ForgotPassword.obj
