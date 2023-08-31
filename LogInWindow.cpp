@@ -81,7 +81,10 @@ void LogInWindow::logIn()
 		service.verifyAccountCredentials(username, service.hashToSHA256(password));
 		errorLabel = new QLabel();
 		this->ui.buttonsLayout->insertWidget(0, errorLabel);
-		errorLabel->setText("Granted access!");
+		User user = service.getUserByUsername(username);
+		mainWindow = new Reddit69(service, user);
+		mainWindow->show();
+		this->hide();
 	}
 	catch (InexistentAcccountException& err) {
 		errorLabel = new QLabel();

@@ -7,6 +7,7 @@
 #include "MyLineEdit.h"
 #include "ClickableLabel.h"
 #include "ForgotPassword.h"
+#include "Reddit69.h"
 class LogInWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -25,6 +26,7 @@ private:
 	QWidget* signUpWindow;
 	QWidget* forgotPasswordWindow;
 	Service& service;
+	Reddit69* mainWindow;
 	void initLogInWindow();
 	void connectSignalsAndSlots();
 	void logIn();

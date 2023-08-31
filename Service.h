@@ -18,5 +18,6 @@ public:
 	void verifyPassword(std::string password);
 	void verifyConfirmPassword(std::string password, std::string confirmPassword);
 	void verifyResetCode(std::string resetCode);
+	User getUserByUsername(std::string username);
 };
 

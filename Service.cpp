@@ -117,5 +117,10 @@ void Service::verifyResetCode(std::string resetCode)
 	v.isValidResetCode(resetCode);
 }
 
+User Service::getUserByUsername(std::string username)
+{
+	return this->userRepository.getUserByUsername(username);
+}
+
 
 

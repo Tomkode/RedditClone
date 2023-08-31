@@ -10,12 +10,12 @@ int app(int argc, char *argv[])
     LogInWindow* login = new LogInWindow(service);
     SignUpWindow* signup = new SignUpWindow(service);
     ForgotPassword* forgor = new ForgotPassword(service);
-    Reddit69* mainWin = new Reddit69();
+    //Reddit69* mainWin = new Reddit69(service);
     login->setChild(signup);
     login->setForgotPasswordWindow(forgor);
     signup->setParent(login);
     login->show();
-    mainWin->show();
+    //mainWin->show();
     return a.exec();
 }
 

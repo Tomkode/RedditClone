@@ -4,7 +4,7 @@ PostTemplateWidget::PostTemplateWidget( QWidget* parent) : QWidget(parent)
 {
 	//setMinimumHeight(height);
 	setStyleSheet("background-color: gray;");
-	
+	this->setFixedHeight(200);
 	initWidget();
 
 }
@@ -17,6 +17,12 @@ PostTemplateWidget::~PostTemplateWidget()
 	delete contentWidget;
 	delete verticalLayout;
 	delete horizontalLayout;
+	delete contentLayout;
+	delete headerLayout;
+	delete footerLayout;
+	delete titleLabel;
+	delete contentLabel;
+	delete footerLabel;
 }
 
 void PostTemplateWidget::initWidget()
@@ -94,4 +100,14 @@ void PostTemplateWidget::initWidget()
 
 	setLayout(horizontalLayout);
 	
+}
+
+void PostTemplateWidget::setTitle(std::string title)
+{
+	this->titleLabel->setText(QString::fromStdString(title));
+}
+
+void PostTemplateWidget::setText(std::string text)
+{
+	this->contentLabel->setText(QString::fromStdString(text));
 }

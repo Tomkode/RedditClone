@@ -15,9 +15,8 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
-#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -45,8 +44,15 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QWidget *postAreaWidget;
     QSpacerItem *horizontalSpacer_3;
-    QScrollBar *verticalScrollBar;
-    QListWidget *listWidget;
+    QWidget *rightWidget;
+    QHBoxLayout *horizontalLayout_7;
+    QHBoxLayout *rightWidgetLayout;
+    QWidget *postWidget;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *postWidgetLayout;
+    QLineEdit *titleLineEdit;
+    QLineEdit *textLineEdit;
+    QPushButton *postButton;
 
     void setupUi(QWidget *Reddit69Class)
     {
@@ -139,7 +145,7 @@ public:
         postArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 540, 558));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 409, 558));
         horizontalLayout_5 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -157,28 +163,67 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_3);
 
-        verticalScrollBar = new QScrollBar(Reddit69Class);
-        verticalScrollBar->setObjectName("verticalScrollBar");
-        verticalScrollBar->setOrientation(Qt::Vertical);
+        rightWidget = new QWidget(Reddit69Class);
+        rightWidget->setObjectName("rightWidget");
+        rightWidget->setMinimumSize(QSize(350, 0));
+        rightWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 127);"));
+        horizontalLayout_7 = new QHBoxLayout(rightWidget);
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        rightWidgetLayout = new QHBoxLayout();
+        rightWidgetLayout->setSpacing(6);
+        rightWidgetLayout->setObjectName("rightWidgetLayout");
+        postWidget = new QWidget(rightWidget);
+        postWidget->setObjectName("postWidget");
+        postWidget->setMinimumSize(QSize(0, 200));
+        postWidget->setMaximumSize(QSize(16777215, 150));
+        postWidget->setStyleSheet(QString::fromUtf8("background-color: gray;"));
+        verticalLayout_3 = new QVBoxLayout(postWidget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        postWidgetLayout = new QVBoxLayout();
+        postWidgetLayout->setSpacing(6);
+        postWidgetLayout->setObjectName("postWidgetLayout");
+        titleLineEdit = new QLineEdit(postWidget);
+        titleLineEdit->setObjectName("titleLineEdit");
+        titleLineEdit->setMaximumSize(QSize(16777215, 25));
+        titleLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
-        horizontalLayout->addWidget(verticalScrollBar);
+        postWidgetLayout->addWidget(titleLineEdit);
+
+        textLineEdit = new QLineEdit(postWidget);
+        textLineEdit->setObjectName("textLineEdit");
+        textLineEdit->setMinimumSize(QSize(0, 75));
+        textLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        textLineEdit->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+
+        postWidgetLayout->addWidget(textLineEdit);
+
+        postButton = new QPushButton(postWidget);
+        postButton->setObjectName("postButton");
+        postButton->setMaximumSize(QSize(100, 25));
+
+        postWidgetLayout->addWidget(postButton);
+
+
+        verticalLayout_3->addLayout(postWidgetLayout);
+
+
+        rightWidgetLayout->addWidget(postWidget);
+
+
+        horizontalLayout_7->addLayout(rightWidgetLayout);
+
+
+        horizontalLayout->addWidget(rightWidget);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
 
         horizontalLayout_3->addLayout(verticalLayout);
-
-        listWidget = new QListWidget(Reddit69Class);
-        listWidget->setObjectName("listWidget");
-        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
-        listWidget->setSizePolicy(sizePolicy3);
-        listWidget->setMinimumSize(QSize(100, 0));
-
-        horizontalLayout_3->addWidget(listWidget);
 
 
         horizontalLayout_4->addLayout(horizontalLayout_3);
@@ -195,6 +240,9 @@ public:
         label->setText(QString());
         searchBarLineEdit->setText(QString());
         searchBarLineEdit->setPlaceholderText(QCoreApplication::translate("Reddit69Class", "Search...", nullptr));
+        titleLineEdit->setPlaceholderText(QCoreApplication::translate("Reddit69Class", "Title", nullptr));
+        textLineEdit->setPlaceholderText(QCoreApplication::translate("Reddit69Class", "Text", nullptr));
+        postButton->setText(QCoreApplication::translate("Reddit69Class", "Post", nullptr));
     } // retranslateUi
 
 };
