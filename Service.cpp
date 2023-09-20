@@ -122,5 +122,41 @@ User Service::getUserByUsername(std::string username)
 	return this->userRepository.getUserByUsername(username);
 }
 
+void Service::addPostByUser(std::string title, std::string content, User user)
+{
+	int userId = userRepository.getUserIdByUsername(user.getUsername());
+	Post newPost(userId, title, content, user.getUsername());
+	postRepository.addPost(newPost);
+}
+
+std::vector<Post> Service::requestPosts(int number)
+{
+	vector<Post> requestedPosts;
+	auto result = postRepository.getPostsByPagination(postOffset, number);
+	
+	while (result->next())
+	{
+		int authorId = result->getInt("author_id");
+		string title = result->getString("title");
+		string content = result->getString("content");
+		int likes = result->getInt("likes");
+		string times = result->getString("time");
+		vector<string> tokens = tokenize(times, ' ');
+		vector<string> date = tokenize(tokens[0], '-');
+		vector <string> time = tokenize(tokens[1], ':');
+
+		
+		Date postDate(stoi(date[2]), stoi(date[1]), stoi(date[0]), stoi(time[0]), stoi(time[1]), stoi(time[2]));
+		string username = this->userRepository.getUsernameById(authorId);
+		Post post(authorId, title, content, postDate, likes, username);
+		requestedPosts.push_back(post);
+		postOffset++;
+	}
+	
+	return requestedPosts;
+}
+
+
+
 
 

@@ -33,3 +33,11 @@ void Validator::isValidResetCode(std::string passwordResetCode)
 	if (!regex_match(passwordResetCode, pattern))
 		throw InvalidResetCodeException();
 }
+
+void Validator::isValidTitle(std::string title)
+{
+}
+
+void Validator::isValidText(std::string text)
+{
+}

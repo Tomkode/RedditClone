@@ -19,7 +19,7 @@ Comment::Comment(std::string author, std::string text)
 	this->time = std::time(NULL); // current time
 }
 
-std::string Comment::getAuthor()
+std::string Comment::getAuthorId()
 {
     return author;
 }
@@ -44,7 +44,7 @@ void Comment::addReply(Comment reply)
     replies.push_back(reply);
 }
 
-void Comment::setAuthor(std::string author)
+void Comment::setPostInfo(std::string author)
 {
     this->author = author;
 }

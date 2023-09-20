@@ -27,6 +27,8 @@ public:
 	void addUser(User newUser);
 	User getUserByUsername(std::string username);
 	User getUsersByEmail(std::string email);
+	int getUserIdByUsername(std::string username);
+	std::string getUsernameById(int id);
 	bool isUserByUsername(std::string username);
 	bool isUserByEmail(std::string email);
 	void changePassword(std::string userName,std::string newPassword);

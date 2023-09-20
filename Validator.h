@@ -10,5 +10,7 @@ public:
 	void isValidEmail(std::string email);
 	void arePasswordsEqual(std::string password, std::string confirmPassword);
 	void isValidResetCode(std::string passwordResetCode);
+	void isValidTitle(std::string title);
+	void isValidText(std::string text);
 };
 

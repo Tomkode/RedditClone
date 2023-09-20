@@ -78,6 +78,54 @@ User userRepository::getUsersByEmail(std::string email)
     }
 }
 
+int userRepository::getUserIdByUsername(std::string username)
+{
+    makeConnection();
+    connection->setSchema("Reddit");
+    sql::PreparedStatement* prep_stmt;
+    sql::ResultSet* res;
+    prep_stmt = connection->prepareStatement("SELECT * FROM users WHERE username = ?");
+    prep_stmt->setString(1, username);
+    res = prep_stmt->executeQuery();
+    if (res->next())
+    {
+        int userId = res->getInt("user_id");
+        delete prep_stmt;
+        closeConnection();
+        return userId;
+    }
+    else
+    {
+        delete prep_stmt;
+        closeConnection();
+        throw InexistentAcccountException();
+    }
+}
+
+std::string userRepository::getUsernameById(int id)
+{
+    makeConnection();
+    connection->setSchema("Reddit");
+    sql::PreparedStatement* prep_stmt;
+    sql::ResultSet* res;
+    prep_stmt = connection->prepareStatement("SELECT * FROM users WHERE user_id = ?");
+    prep_stmt->setInt(1, id);
+    res = prep_stmt->executeQuery();
+    if (res->next())
+    {
+        std::string username = res->getString("username");
+        delete prep_stmt;
+        closeConnection();
+        return username;
+    }
+    else
+    {
+        delete prep_stmt;
+        closeConnection();
+        throw InexistentAcccountException();
+    }
+}
+
 bool userRepository::isUserByUsername(std::string username)
 {
     makeConnection();

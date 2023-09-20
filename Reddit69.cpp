@@ -1,6 +1,8 @@
 #include "Reddit69.h"
 #include <QLabel>
+#include "QVScrollBar.h"
 
+using namespace std;
 Reddit69::Reddit69(Service& serv, User user, QWidget *parent)
     : QWidget(parent), service{ serv }, user{ user }
 {
@@ -25,7 +27,7 @@ void Reddit69::initWindow()
     this->ui.postWidgetLayout->setAlignment(Qt::AlignCenter);
     //ui.postArea->setWidget(ui.postAreaWidget);
     //ui.postAreaWidget->setLayout(mainLayout);
-
+    displayPosts();
     connectSignalsAndSlots();
 }
 
@@ -36,25 +38,28 @@ void Reddit69::uploadPost()
 {
    std::string title = this->ui.titleLineEdit->text().toStdString();
    std::string text = this->ui.textLineEdit->text().toStdString();
-   std::string userName = this->user.getUsername();
-   std::string author = " - Posted by " + userName;
+   int userId = this->user.getUserId();
+   Post post(userId, title, text, user.getUsername());
    if (title == "" || text == "")
    {
        //make an error label somewhere
        return;
    }
-   auto postWidget = createWidgetWithPost(title, text, author);
+   auto postWidget = createWidgetWithPost(post);
    posts.push_back(postWidget);
-   this->mainLayout->addWidget(postWidget);
+   displayPost(post);
    this->ui.titleLineEdit->clear();
    this->ui.textLineEdit->clear();
+   service.addPostByUser(title, text, user);
 }
 
-QWidget* Reddit69::createWidgetWithPost(std::string title, std::string text, std::string author)
+QWidget* Reddit69::createWidgetWithPost(Post post)
 {
     auto postWidget = new PostTemplateWidget;
-    postWidget->setTitle(title + author);
-    postWidget->setText(text);
+    postWidget->setTitle(post.getTitle());
+    postWidget->setText(post.getText());
+    postWidget->setPostInfo(post.getAuthorUsername(), "3");
+    postWidget->setComments(10);
 
     return postWidget;
 }
@@ -62,6 +67,33 @@ QWidget* Reddit69::createWidgetWithPost(std::string title, std::string text, std
 void Reddit69::connectSignalsAndSlots()
 {
 	QObject::connect(this->ui.postButton, &QPushButton::clicked, this, &Reddit69::uploadPost);
+	QObject::connect(this->ui.postArea->verticalScrollBar(), &QScrollBar::valueChanged, this, &Reddit69::checkScrollValue);
+    QObject::connect(this, &Reddit69::maximumScrollReached, this, &Reddit69::displayPosts);
+}
+
+void Reddit69::displayPosts()
+{
+    vector<Post> requestedPosts = service.requestPosts(10);
+    for (Post post : requestedPosts)
+    {
+        displayPost(post);
+    }
+
+    
+
+}
+
+void Reddit69::displayPost(Post post)
+{
+    auto postWidget = createWidgetWithPost(post);
+    this->mainLayout->addWidget(postWidget);
+}
+
+void Reddit69::checkScrollValue()
+{
+    if (this->ui.postArea->verticalScrollBar()->value() == this->ui.postArea->verticalScrollBar()->maximum())
+        emit maximumScrollReached();
+
 }
 
 

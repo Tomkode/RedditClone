@@ -15,7 +15,8 @@ public:
     Reddit69(Service& serv, User user , QWidget *parent = nullptr);
     void initWindow();
     ~Reddit69();
-
+signals:
+    void maximumScrollReached();
 private:
     Ui::Reddit69Class ui;
     std::vector<QWidget*> posts;
@@ -23,6 +24,9 @@ private:
     User user;
     QVBoxLayout* mainLayout;
     void uploadPost();
-    QWidget* createWidgetWithPost(std::string title, std::string text, std::string author);
+    QWidget* createWidgetWithPost(Post post);
     void connectSignalsAndSlots();
+    void displayPosts();
+    void displayPost(Post post);
+    void checkScrollValue();
 };

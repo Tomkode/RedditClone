@@ -3,6 +3,7 @@
 class User
 {
 private:
+	int userId;
 	std::string username;
 	std::string password;
 	std::string email;
@@ -14,5 +15,6 @@ public:
 	std::string getPassword();
 	std::string getEmail();
 	std::string getResetCode();
+	int getUserId();
 };
 

@@ -31,3 +31,8 @@ std::string User::getResetCode()
 {
 	return resetCode;
 }
+
+int User::getUserId()
+{
+	return userId;
+}

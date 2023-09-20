@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1063</width>
-    <height>648</height>
+    <width>1301</width>
+    <height>659</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -151,7 +151,7 @@ background-color: #dae0e6
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>100</width>
+             <width>20</width>
              <height>20</height>
             </size>
            </property>
@@ -170,8 +170,8 @@ background-color: #dae0e6
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>409</width>
-              <height>558</height>
+              <width>608</width>
+              <height>569</height>
              </rect>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -192,7 +192,7 @@ background-color: #dae0e6
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>100</width>
+             <width>20</width>
              <height>20</height>
             </size>
            </property>

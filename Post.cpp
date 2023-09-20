@@ -2,10 +2,10 @@
 
 Post::Post()
 {
-    author = "";
+    author_id = 0;
     title = "";
     text = "";
-    time = 0;
+    time = Date();
     likes = 0;
 
 }
@@ -14,18 +14,35 @@ Post::~Post()
 {
 }
 
-Post::Post(std::string author, std::string title, std::string text)
+Post::Post(int author_id, std::string title, std::string text, std::string username)
 {
-    this->author = author;
+    this->author_id = author_id;
+    this->username;
     this->title = title;
     this->text = text;
     this->likes = 0;
-    this->time = std::time(NULL);
+    this->time = Date();
+    this->username = username;
 }
 
-std::string Post::getAuthor()
+Post::Post(int author_id, std::string title, std::string text, Date time, int likes,std::string username)
 {
-    return author;
+    this->author_id = author_id;
+    this->title = title;
+    this->text = text;
+    this->likes = likes;
+    this->time = time;
+    this->username = username;
+}
+
+int Post::getAuthorId()
+{
+    return author_id;
+}
+
+std::string Post::getAuthorUsername()
+{
+    return username;
 }
 
 std::string Post::getTitle()
@@ -38,7 +55,7 @@ std::string Post::getText()
     return text;
 }
 
-std::time_t Post::getTime()
+Date Post::getTime()
 {
     return this->time;
 }
@@ -58,10 +75,10 @@ std::vector<Comment> Post::getComments()
     return comments;
 }
 
-void Post::setAuthor(std::string author)
-{
-    this->author = author;
-}
+//void Post::setAuthor(std::string author)
+//{
+//    this->author = author;
+//}
 
 void Post::setTitle(std::string title)
 {
@@ -73,10 +90,10 @@ void Post::setText(std::string text)
     this->text = text;
 }
 
-void Post::setTime(std::time_t time)
-{
-    this->time = time;
-}
+//void Post::setTime(std::time_t time)
+//{
+//    this->time = time;
+//}
 
 void Post::setLikes(int likes)
 {
@@ -86,9 +103,4 @@ void Post::setLikes(int likes)
 void Post::addTag(std::string tag)
 {
     this->tags.push_back(tag);
-}
-
-void Post::addComment(Comment comment)
-{
-    this->comments.push_back(comment);
 }
