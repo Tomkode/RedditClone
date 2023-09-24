@@ -11,6 +11,17 @@ Date::Date(int day, int month, int year, int hour, int minute, int second)
 	this->hour = hour;
 	this->minute = minute;
 	this->second = second;
+
+	struct tm utc;
+	utc.tm_year = year - 1900;
+	
+	utc.tm_mon = month - 1;
+	utc.tm_mday = day;
+	utc.tm_hour = hour;
+	utc.tm_min = minute;
+	utc.tm_sec = second;
+	utc.tm_isdst = 0;
+	timeStruct = _mkgmtime(&utc);
 }
 
 Date::Date()
@@ -24,6 +35,8 @@ Date::Date()
 	this->minute = UTCtime->tm_min;
 	this->second = UTCtime->tm_sec;
 }
+
+
 
 int Date::getDay()
 {
@@ -67,4 +80,16 @@ std::string Date::getUTCDateForMysql()
 	strftime(buffer, 32, "%Y-%m-%d %H:%M:%S", UTCtime);
 	string mysqlFormat(buffer);
 	return mysqlFormat;
+}
+
+
+
+time_t Date::getTime_T()
+{
+	return timeStruct;
+}
+
+int operator-(Date bigDate, Date smallDate)
+{
+	return difftime(bigDate.getTime_T(), smallDate.getTime_T());
 }

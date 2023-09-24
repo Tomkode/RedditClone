@@ -27,6 +27,8 @@ void Reddit69::initWindow()
     this->ui.postWidgetLayout->setAlignment(Qt::AlignCenter);
     //ui.postArea->setWidget(ui.postAreaWidget);
     //ui.postAreaWidget->setLayout(mainLayout);
+
+    this->ui.postArea->setFrameShape(QFrame::NoFrame);
     displayPosts();
     connectSignalsAndSlots();
 }
@@ -47,7 +49,7 @@ void Reddit69::uploadPost()
    }
    auto postWidget = createWidgetWithPost(post);
    posts.push_back(postWidget);
-   displayPost(post);
+   //displayPost(post);
    this->ui.titleLineEdit->clear();
    this->ui.textLineEdit->clear();
    service.addPostByUser(title, text, user);
@@ -58,7 +60,8 @@ QWidget* Reddit69::createWidgetWithPost(Post post)
     auto postWidget = new PostTemplateWidget;
     postWidget->setTitle(post.getTitle());
     postWidget->setText(post.getText());
-    postWidget->setPostInfo(post.getAuthorUsername(), "3");
+    string timeAgo = service.processPostTime(post);
+    postWidget->setPostInfo(post.getAuthorUsername(), timeAgo);
     postWidget->setComments(10);
 
     return postWidget;

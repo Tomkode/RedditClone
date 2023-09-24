@@ -26,5 +26,6 @@ public:
 	User getUserByUsername(std::string username);
 	void addPostByUser(std::string title, std::string content, User user);
 	std::vector<Post> requestPosts(int number);
+	std::string processPostTime(Post post);
 };
 

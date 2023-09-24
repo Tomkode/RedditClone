@@ -307,7 +307,7 @@ void PostTemplateWidget::setText(std::string text)
 
 void PostTemplateWidget::setPostInfo(std::string author, std::string time)
 {
-	std::string text = "Posted by " + author+" "+time+" hours ago";
+	std::string text = "Posted by " + author+" "+time;
 	this->authorLabel->setText(QString::fromStdString(text));
 }
 

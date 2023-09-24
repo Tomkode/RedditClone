@@ -27,6 +27,7 @@ public:
     postRepository();
     void addPost(Post post);
     void updateLikes(Post postToUpdate, int newLikes);
+    void addUserPostInteraction(int userId, Post post, int value);
     int getPostId(Post post);
     sql::ResultSet* getPostsByPagination(int offset, int requestSize);
 };

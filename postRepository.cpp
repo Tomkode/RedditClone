@@ -40,6 +40,29 @@ void postRepository::updateLikes(Post postToUpdate, int newLikes)
     closeConnection();
 }
 
+void postRepository::addUserPostInteraction(int userId, Post post, int value)
+{
+    makeConnection();
+    sql::ResultSet* res;
+    sql::PreparedStatement* prep_stmt;
+    sql::ResultSet* result;
+    prep_stmt = connection->prepareStatement("INSERT INTO user_likes(user_id, post_id, like_val) VALUES(?, ?, ?)");
+    prep_stmt = connection->prepareStatement("SELECT * FROM user_likes WHERE user_id = ?, post_id = ? ");
+
+    prep_stmt->setInt(1, userId);
+    prep_stmt->setInt(2, this->getPostId(post));
+    result = prep_stmt->executeQuery();
+    if (result->next())
+    {
+        int likeVal = result->getInt("like_val");
+        if(likeVal == )
+    }
+    prep_stmt->setInt(3, value);
+    
+    delete prep_stmt;
+    closeConnection();
+}
+
 int postRepository::getPostId(Post post)
 {
     makeConnection();

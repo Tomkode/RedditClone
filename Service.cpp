@@ -156,6 +156,44 @@ std::vector<Post> Service::requestPosts(int number)
 	return requestedPosts;
 }
 
+std::string Service::processPostTime(Post post)
+{
+	Date currentTime;
+	int seconds = currentTime- post.getTime();
+	int minutes;
+	int hours;
+	int days;
+	if (seconds >= 60){
+		minutes = seconds / 60;
+
+		}
+	else
+	{
+		string timeAgo = to_string(seconds) + " seconds ago";
+		return timeAgo;
+	}
+	if (minutes >= 60)
+	{
+		hours = minutes / 60;
+	}
+	else
+	{
+		string timeAgo = to_string(minutes) + " minutes ago";
+		return timeAgo;
+	}
+	if (hours >= 24)
+	{
+		days = hours / 24;
+		string timeAgo = to_string(days) + " days ago";
+		return timeAgo;
+	}
+	else {
+		string timeAgo = to_string(hours) + " hours ago";
+		return timeAgo;
+	}
+	
+}
+
 
 
 

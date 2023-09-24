@@ -176,7 +176,13 @@ background-color: #dae0e6
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
-              <widget class="QWidget" name="postAreaWidget" native="true"/>
+              <widget class="QWidget" name="postAreaWidget" native="true">
+               <property name="styleSheet">
+                <string notr="true">QScrollArea {
+border: none;
+}</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -188,7 +194,7 @@ background-color: #dae0e6
             <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
-            <enum>QSizePolicy::Minimum</enum>
+            <enum>QSizePolicy::Maximum</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -200,9 +206,15 @@ background-color: #dae0e6
          </item>
          <item>
           <widget class="QWidget" name="rightWidget" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>350</width>
+             <width>300</width>
              <height>0</height>
             </size>
            </property>
