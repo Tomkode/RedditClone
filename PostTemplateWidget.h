@@ -5,6 +5,7 @@
 #include <QStackedLayout>
 #include <QLabel>
 #include <QSpinBox>
+#include <QPushButton>
 class PostTemplateWidget : public QWidget
 {
 public:
@@ -14,6 +15,7 @@ public:
 	void setText(std::string text);
 	void setPostInfo(std::string author, std::string time);
     void setComments(int commentsNum);
+    void setLikes(int likesNum);
 private:
     QWidget* centralWidget;
     QWidget* postWidget;
@@ -22,7 +24,12 @@ private:
     QWidget* sideBarWidget;
     QVBoxLayout* verticalLayout_4;
     QSpacerItem* verticalSpacer_2;
-    QSpinBox* upvoteBox;
+    QVBoxLayout* postButtonsLayout;
+    QHBoxLayout* upvoteButtonLayout;
+    QPushButton* upvoteButton;
+    QLabel* likesNumLabel;
+    QHBoxLayout* downvoteButtonLayout;
+    QPushButton* downvoteButton;
     QSpacerItem* verticalSpacer;
     QVBoxLayout* verticalLayout;
     QWidget* headerWidget;
@@ -37,7 +44,7 @@ private:
     QHBoxLayout* horizontalLayout_3;
     QVBoxLayout* commentIconLayout;
     QLabel* commentIconLabel;
-    QLabel* commentsInfoLabel;
+    QLabel* commentInfoLabel;
     QSpacerItem* horizontalSpacer;
   
 	void initWidget();

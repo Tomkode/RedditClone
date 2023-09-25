@@ -16,7 +16,7 @@ private:
 	sql::mysql::MySQL_Driver* driver;
 	sql::Connection* connection;
 	void makeConnection(){
-        connection = driver->connect("tcp://127.0.0.1:3306", "root", "admin");
+		connection = driver->connect("tcp://mariola.mysql.database.azure.com", "mariola", "Admin69!");
 	}
     void closeConnection()
     {

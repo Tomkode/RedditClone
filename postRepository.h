@@ -16,7 +16,8 @@ private:
     sql::mysql::MySQL_Driver* driver;
     sql::Connection* connection;
     void makeConnection() {
-        connection = driver->connect("tcp://127.0.0.1:3306", "root", "admin");
+        connection = driver->connect("tcp://mariola.mysql.database.azure.com", "mariola", "Admin69!");
+
         connection->setSchema("Reddit");
     }
     void closeConnection()
@@ -27,7 +28,9 @@ public:
     postRepository();
     void addPost(Post post);
     void updateLikes(Post postToUpdate, int newLikes);
-    void addUserPostInteraction(int userId, Post post, int value);
+    void addUPI(int userId, Post post, int value);
+    void updateUPI(int userId, Post post, int newValue);
+    int getUPIvalue(int userId, Post post);
     int getPostId(Post post);
     sql::ResultSet* getPostsByPagination(int offset, int requestSize);
 };

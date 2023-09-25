@@ -47,7 +47,7 @@ void Reddit69::uploadPost()
        //make an error label somewhere
        return;
    }
-   auto postWidget = createWidgetWithPost(post);
+   auto postWidget = createWidgetPost(post);
    posts.push_back(postWidget);
    //displayPost(post);
    this->ui.titleLineEdit->clear();
@@ -55,7 +55,7 @@ void Reddit69::uploadPost()
    service.addPostByUser(title, text, user);
 }
 
-QWidget* Reddit69::createWidgetWithPost(Post post)
+QWidget* Reddit69::createWidgetPost(Post post)
 {
     auto postWidget = new PostTemplateWidget;
     postWidget->setTitle(post.getTitle());
@@ -63,7 +63,8 @@ QWidget* Reddit69::createWidgetWithPost(Post post)
     string timeAgo = service.processPostTime(post);
     postWidget->setPostInfo(post.getAuthorUsername(), timeAgo);
     postWidget->setComments(10);
-
+    service.getUPInteraction(user, post);
+    postWidget->setLikes(post.getLikes());
     return postWidget;
 }
 
@@ -88,7 +89,7 @@ void Reddit69::displayPosts()
 
 void Reddit69::displayPost(Post post)
 {
-    auto postWidget = createWidgetWithPost(post);
+    auto postWidget = createWidgetPost(post);
     this->mainLayout->addWidget(postWidget);
 }
 

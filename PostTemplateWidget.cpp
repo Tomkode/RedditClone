@@ -102,8 +102,7 @@ void PostTemplateWidget::initWidget()
 
 	//setLayout(horizontalLayout);
    
-    this->setObjectName("postWidget");
-    this->setGeometry(QRect(130, 10, 651, 221));
+    
     this->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
     verticalLayout_3 = new QVBoxLayout(this);
     verticalLayout_3->setSpacing(0);
@@ -120,34 +119,99 @@ void PostTemplateWidget::initWidget()
     sizePolicy.setVerticalStretch(0);
     sizePolicy.setHeightForWidth(sideBarWidget->sizePolicy().hasHeightForWidth());
     sideBarWidget->setSizePolicy(sizePolicy);
-    sideBarWidget->setMinimumSize(QSize(45, 0));
+    sideBarWidget->setMinimumSize(QSize(38, 0));
+    sideBarWidget->setMaximumSize(QSize(40, 16777215));
     sideBarWidget->setStyleSheet(QString::fromUtf8("background-color: #F5F5F5;"));
     verticalLayout_4 = new QVBoxLayout(sideBarWidget);
-    verticalLayout_4->setSpacing(6);
+    verticalLayout_4->setSpacing(0);
     verticalLayout_4->setContentsMargins(11, 11, 11, 11);
     verticalLayout_4->setObjectName("verticalLayout_4");
-    verticalLayout_4->setContentsMargins(5, -1, 2, -1);
-    verticalSpacer_2 = new QSpacerItem(20, 24, QSizePolicy::Minimum, QSizePolicy::Fixed);
+    verticalLayout_4->setContentsMargins(0, 15, 0, 0);
+    verticalSpacer_2 = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
     verticalLayout_4->addItem(verticalSpacer_2);
 
-    upvoteBox = new QSpinBox(sideBarWidget);
-    upvoteBox->setObjectName("upvoteBox");
-    QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    postButtonsLayout = new QVBoxLayout();
+    postButtonsLayout->setSpacing(3);
+    postButtonsLayout->setObjectName("postButtonsLayout");
+    upvoteButtonLayout = new QHBoxLayout();
+    upvoteButtonLayout->setSpacing(0);
+    upvoteButtonLayout->setObjectName("upvoteButtonLayout");
+    upvoteButtonLayout->setContentsMargins(-1, -1, 1, -1);
+    upvoteButton = new QPushButton(sideBarWidget);
+    upvoteButton->setObjectName("upvoteButton");
+    QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
     sizePolicy1.setHorizontalStretch(0);
     sizePolicy1.setVerticalStretch(0);
-    sizePolicy1.setHeightForWidth(upvoteBox->sizePolicy().hasHeightForWidth());
-    upvoteBox->setSizePolicy(sizePolicy1);
-    upvoteBox->setMinimumSize(QSize(40, 45));
-    upvoteBox->setLayoutDirection(Qt::LeftToRight);
-    upvoteBox->setStyleSheet(QString::fromUtf8(""));
-    upvoteBox->setAlignment(Qt::AlignLeading | Qt::AlignLeft | Qt::AlignVCenter);
+    sizePolicy1.setHeightForWidth(upvoteButton->sizePolicy().hasHeightForWidth());
+    upvoteButton->setSizePolicy(sizePolicy1);
+    upvoteButton->setMaximumSize(QSize(25, 25));
+    upvoteButton->setLayoutDirection(Qt::LeftToRight);
+    upvoteButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+        "{\n"
+        "border: 0px;\n"
+        "}"));
+    QIcon icon;
+    icon.addFile(QString::fromUtf8("C:/Users/mario/OneDrive/Desktop/notPressedUpvote.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon.addFile(QString::fromUtf8("C:/Users/mario/OneDrive/Desktop/upvote.png"), QSize(), QIcon::Active, QIcon::On);
+    upvoteButton->setIcon(icon);
+    upvoteButton->setIconSize(QSize(45, 25));
+    upvoteButton->setCheckable(true);
+    upvoteButton->setChecked(false);
 
-    verticalLayout_4->addWidget(upvoteBox);
+    upvoteButtonLayout->addWidget(upvoteButton);
+
+
+    postButtonsLayout->addLayout(upvoteButtonLayout);
+
+    likesNumLabel = new QLabel(sideBarWidget);
+    likesNumLabel->setObjectName("likesNumLabel");
+    likesNumLabel->setStyleSheet(QString::fromUtf8("QLabel\n"
+        "{\n"
+        "	\n"
+        "	color: #808080;\n"
+        "	font-size:11px;\n"
+        "	font-weight:700;\n"
+        "\n"
+        "}"));
+    likesNumLabel->setAlignment(Qt::AlignCenter);
+
+    postButtonsLayout->addWidget(likesNumLabel);
+
+    downvoteButtonLayout = new QHBoxLayout();
+    downvoteButtonLayout->setSpacing(0);
+    downvoteButtonLayout->setObjectName("downvoteButtonLayout");
+    downvoteButtonLayout->setContentsMargins(-1, -1, 1, -1);
+    downvoteButton = new QPushButton(sideBarWidget);
+    downvoteButton->setObjectName("downvoteButton");
+    QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    sizePolicy2.setHorizontalStretch(0);
+    sizePolicy2.setVerticalStretch(0);
+    sizePolicy2.setHeightForWidth(downvoteButton->sizePolicy().hasHeightForWidth());
+    downvoteButton->setSizePolicy(sizePolicy2);
+    downvoteButton->setMaximumSize(QSize(25, 25));
+    downvoteButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+        "{\n"
+        "border: 0px;\n"
+        "}"));
+    QIcon icon1;
+    icon1.addFile(QString::fromUtf8("C:/Users/mario/OneDrive/Desktop/notpressedDownvote.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon1.addFile(QString::fromUtf8("C:/Users/mario/OneDrive/Desktop/pressedDownvote.png"), QSize(), QIcon::Active, QIcon::On);
+    downvoteButton->setIcon(icon1);
+    downvoteButton->setIconSize(QSize(45, 25));
+    downvoteButton->setCheckable(true);
+
+    downvoteButtonLayout->addWidget(downvoteButton);
+
+
+    postButtonsLayout->addLayout(downvoteButtonLayout);
 
     verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-    verticalLayout_4->addItem(verticalSpacer);
+    postButtonsLayout->addItem(verticalSpacer);
+
+
+    verticalLayout_4->addLayout(postButtonsLayout);
 
 
     horizontalLayout->addWidget(sideBarWidget);
@@ -157,11 +221,11 @@ void PostTemplateWidget::initWidget()
     verticalLayout->setObjectName("verticalLayout");
     headerWidget = new QWidget(this);
     headerWidget->setObjectName("headerWidget");
-    QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    sizePolicy2.setHorizontalStretch(0);
-    sizePolicy2.setVerticalStretch(0);
-    sizePolicy2.setHeightForWidth(headerWidget->sizePolicy().hasHeightForWidth());
-    headerWidget->setSizePolicy(sizePolicy2);
+    QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    sizePolicy3.setHorizontalStretch(0);
+    sizePolicy3.setVerticalStretch(0);
+    sizePolicy3.setHeightForWidth(headerWidget->sizePolicy().hasHeightForWidth());
+    headerWidget->setSizePolicy(sizePolicy3);
     headerWidget->setMinimumSize(QSize(0, 75));
     headerWidget->setMaximumSize(QSize(16777215, 70));
     verticalLayout_7 = new QVBoxLayout(headerWidget);
@@ -207,12 +271,12 @@ void PostTemplateWidget::initWidget()
 
     contentWidget = new QWidget(this);
     contentWidget->setObjectName("contentWidget");
-    QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    sizePolicy3.setHorizontalStretch(0);
-    sizePolicy3.setVerticalStretch(0);
-    sizePolicy3.setHeightForWidth(contentWidget->sizePolicy().hasHeightForWidth());
-    contentWidget->setSizePolicy(sizePolicy3);
-    contentWidget->setMinimumSize(QSize(0, 0));
+    QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    sizePolicy4.setHorizontalStretch(0);
+    sizePolicy4.setVerticalStretch(0);
+    sizePolicy4.setHeightForWidth(contentWidget->sizePolicy().hasHeightForWidth());
+    contentWidget->setSizePolicy(sizePolicy4);
+    contentWidget->setMinimumSize(QSize(0, 70));
     horizontalLayout_2 = new QHBoxLayout(contentWidget);
     horizontalLayout_2->setSpacing(6);
     horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -235,11 +299,11 @@ void PostTemplateWidget::initWidget()
 
     footerWidget = new QWidget(this);
     footerWidget->setObjectName("footerWidget");
-    QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    sizePolicy4.setHorizontalStretch(0);
-    sizePolicy4.setVerticalStretch(40);
-    sizePolicy4.setHeightForWidth(footerWidget->sizePolicy().hasHeightForWidth());
-    footerWidget->setSizePolicy(sizePolicy4);
+    QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    sizePolicy5.setHorizontalStretch(0);
+    sizePolicy5.setVerticalStretch(40);
+    sizePolicy5.setHeightForWidth(footerWidget->sizePolicy().hasHeightForWidth());
+    footerWidget->setSizePolicy(sizePolicy5);
     footerWidget->setMinimumSize(QSize(0, 40));
     horizontalLayout_3 = new QHBoxLayout(footerWidget);
     horizontalLayout_3->setSpacing(0);
@@ -247,13 +311,13 @@ void PostTemplateWidget::initWidget()
     horizontalLayout_3->setObjectName("horizontalLayout_3");
     horizontalLayout_3->setContentsMargins(4, 4, -1, 2);
     commentIconLayout = new QVBoxLayout();
-    commentIconLayout->setSpacing(6);
+    commentIconLayout->setSpacing(0);
     commentIconLayout->setObjectName("commentIconLayout");
     commentIconLayout->setContentsMargins(-1, 5, -1, -1);
     commentIconLabel = new QLabel(footerWidget);
     commentIconLabel->setObjectName("commentIconLabel");
-    sizePolicy1.setHeightForWidth(commentIconLabel->sizePolicy().hasHeightForWidth());
-    commentIconLabel->setSizePolicy(sizePolicy1);
+    sizePolicy2.setHeightForWidth(commentIconLabel->sizePolicy().hasHeightForWidth());
+    commentIconLabel->setSizePolicy(sizePolicy2);
     commentIconLabel->setMinimumSize(QSize(31, 21));
     commentIconLabel->setMaximumSize(QSize(31, 21));
     commentIconLabel->setPixmap(QPixmap(QString::fromUtf8("C:/Users/mario/OneDrive/Desktop/icon.png")));
@@ -264,9 +328,9 @@ void PostTemplateWidget::initWidget()
 
     horizontalLayout_3->addLayout(commentIconLayout);
 
-    commentsInfoLabel = new QLabel(footerWidget);
-    commentsInfoLabel->setObjectName("commentsInfoLabel");
-    commentsInfoLabel->setStyleSheet(QString::fromUtf8("QLabel\n"
+    commentInfoLabel = new QLabel(footerWidget);
+    commentInfoLabel->setObjectName("commentInfoLabel");
+    commentInfoLabel->setStyleSheet(QString::fromUtf8("QLabel\n"
         "{\n"
         "	\n"
         "	color: #808080;\n"
@@ -275,7 +339,7 @@ void PostTemplateWidget::initWidget()
         "\n"
         "}"));
 
-    horizontalLayout_3->addWidget(commentsInfoLabel);
+    horizontalLayout_3->addWidget(commentInfoLabel);
 
     horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -290,8 +354,7 @@ void PostTemplateWidget::initWidget()
 
     verticalLayout_3->addLayout(horizontalLayout);
 
-    
-
+ 
 	
 }
 
@@ -314,5 +377,10 @@ void PostTemplateWidget::setPostInfo(std::string author, std::string time)
 void PostTemplateWidget::setComments(int commentsNum)
 {
     std::string text = std::to_string(commentsNum) + " Comments";
-    this->commentsInfoLabel->setText(QString::fromStdString(text));
+    this->commentInfoLabel->setText(QString::fromStdString(text));
+}
+
+void PostTemplateWidget::setLikes(int likesNum)
+{
+    this->likesNumLabel->setText(QString::fromStdString(std::to_string(likesNum)));
 }

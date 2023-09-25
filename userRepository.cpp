@@ -37,7 +37,8 @@ User userRepository::getUserByUsername(std::string username)
         std::string password = res->getString("password").asStdString();
         std::string email = res->getString("email").asStdString();
         std::string resetCode = res->getString("resetcode").asStdString();
-        User foundUser(userName, password, email, resetCode);
+        int userId = res->getInt("user_id");
+        User foundUser(userId, userName, password, email, resetCode);
         delete prep_stmt;
         closeConnection();
         return foundUser;

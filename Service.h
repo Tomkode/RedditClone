@@ -25,6 +25,8 @@ public:
 	void verifyResetCode(std::string resetCode);
 	User getUserByUsername(std::string username);
 	void addPostByUser(std::string title, std::string content, User user);
+	void likePost(User user, Post post, int value);
+	int getUPInteraction(User user, Post post);
 	std::vector<Post> requestPosts(int number);
 	std::string processPostTime(Post post);
 };

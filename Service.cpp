@@ -129,6 +129,33 @@ void Service::addPostByUser(std::string title, std::string content, User user)
 	postRepository.addPost(newPost);
 }
 
+void Service::likePost(User user, Post post, int value)
+{
+	int interactionVal = postRepository.getUPIvalue(user.getUserId(), post);
+	if (interactionVal == 0)
+	{
+		postRepository.addUPI(user.getUserId(), post, value);
+		postRepository.updateLikes(post, value);
+	}
+	else if (interactionVal != value)
+	{
+		postRepository.updateUPI(user.getUserId(), post, value);
+		if (value == 1)
+			postRepository.updateLikes(post, value + 1);
+		else
+			postRepository.updateLikes(post, value - 1);
+	}
+	else {
+		//throw exception maybe
+		return;
+	}
+}
+
+int Service::getUPInteraction(User user, Post post)
+{
+	 return postRepository.getUPIvalue(user.getUserId(), post);
+}
+
 std::vector<Post> Service::requestPosts(int number)
 {
 	vector<Post> requestedPosts;

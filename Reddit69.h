@@ -24,7 +24,7 @@ private:
     User user;
     QVBoxLayout* mainLayout;
     void uploadPost();
-    QWidget* createWidgetWithPost(Post post);
+    QWidget* createWidgetPost(Post post);
     void connectSignalsAndSlots();
     void displayPosts();
     void displayPost(Post post);
