@@ -16,3 +16,10 @@
   - MySQL
   - Microsoft Azure
 
+## Preview
+
+![image](https://github.com/Tomkode/RedditClone/assets/79474984/aaf6ec5b-0fed-4654-a4a1-e17c8ffd2d57)
+
+![image](https://github.com/Tomkode/RedditClone/assets/79474984/c27c8661-f43b-4511-8d60-bce220cd4090)
+
+![image](https://github.com/Tomkode/RedditClone/assets/79474984/0b38d5f1-7cdc-4336-80f0-029b3774500f)
